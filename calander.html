@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QORE Appointments Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2513ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121022",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans Hebrew", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px; /* Default size */
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#121118] dark:text-white">
+<div class="relative flex h-screen w-full flex-col group/design-root overflow-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-black/10 dark:border-b-white/10 px-6 lg:px-10 py-3 bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-4 text-[#121118] dark:text-white">
+<span class="material-symbols-outlined text-2xl text-primary">calendar_month</span>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">פגישות</h2>
+</div>
+<div class="flex flex-1 justify-end gap-2">
+<label class="flex flex-col min-w-40 !h-10 w-full max-w-sm">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#656189] dark:text-gray-300 flex border-none bg-[#f0f0f4] dark:bg-white/10 items-center justify-center pl-3 pr-2 rounded-r-lg border-l-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#121118] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-[#f0f0f4] dark:bg-white/10 h-full placeholder:text-[#656189] dark:placeholder:text-gray-400 px-2 rounded-r-none border-r-0 pl-2 text-base font-normal leading-normal" placeholder="חיפוש..." value=""/>
+</div>
+</label>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#f0f0f4] dark:bg-white/10 text-[#121118] dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-3">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Column (35%) -->
+<div class="w-full max-w-sm lg:max-w-md xl:max-w-lg border-l border-black/10 dark:border-white/10 flex flex-col overflow-y-auto p-4 space-y-6">
+<!-- Status Filters -->
+<div class="flex px-1 py-1">
+<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-[#eef0f2] dark:bg-white/10 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-primary/30 has-[:checked]:shadow-sm has-[:checked]:text-[#121118] dark:has-[:checked]:text-white text-[#656189] dark:text-gray-300 text-sm font-medium leading-normal">
+<span class="truncate">הכל</span>
+<input class="invisible w-0" name="status-filter" type="radio" value="הכל"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-primary/30 has-[:checked]:shadow-sm has-[:checked]:text-[#121118] dark:has-[:checked]:text-white text-[#656189] dark:text-gray-300 text-sm font-medium leading-normal">
+<span class="truncate">נקבעו</span>
+<input checked="" class="invisible w-0" name="status-filter" type="radio" value="נקבעו"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-primary/30 has-[:checked]:shadow-sm has-[:checked]:text-[#121118] dark:has-[:checked]:text-white text-[#656189] dark:text-gray-300 text-sm font-medium leading-normal">
+<span class="truncate">הושלמו</span>
+<input class="invisible w-0" name="status-filter" type="radio" value="הושלמו"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-primary/30 has-[:checked]:shadow-sm has-[:checked]:text-[#121118] dark:has-[:checked]:text-white text-[#656189] dark:text-gray-300 text-sm font-medium leading-normal">
+<span class="truncate">בוטלו</span>
+<input class="invisible w-0" name="status-filter" type="radio" value="בוטלו"/>
+</label>
+</div>
+</div>
+<!-- Date Picker -->
+<div class="flex min-w-72 flex-1 flex-col gap-0.5 bg-white dark:bg-background-dark p-3 rounded-xl border border-black/5 dark:border-white/10">
+<div class="flex items-center p-1 justify-between">
+<button class="text-[#121118] dark:text-white flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<p class="text-[#121118] dark:text-white text-base font-bold leading-tight flex-1 text-center">יולי 2024</p>
+<button class="text-[#121118] dark:text-white flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+</div>
+<div class="grid grid-cols-7">
+<p class="text-[#656189] dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center">א</p>
+<p class="text-[#656189] dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center">ב</p>
+<p class="text-[#656189] dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center">ג</p>
+<p class="text-[#656189] dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center">ד</p>
+<p class="text-[#656189] dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center">ה</p>
+<p class="text-[#656189] dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center">ו</p>
+<p class="text-[#656189] dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center">ש</p>
+<button class="h-10 w-full text-gray-400 dark:text-gray-500 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full">30</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal col-start-2"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">1</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">2</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">3</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">4</div></button>
+<button class="h-10 w-full text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full bg-primary relative"><span class="absolute bottom-1 h-1 w-1 rounded-full bg-white/80"></span>5</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">6</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">7</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">8</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 relative"><span class="absolute bottom-1 h-1 w-1 rounded-full bg-primary/50"></span>9</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">10</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">11</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">12</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 relative"><span class="absolute bottom-1 h-1 w-1 rounded-full bg-primary/50"></span>13</div></button>
+<button class="h-10 w-full text-[#121118] dark:text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">14</div></button>
+</div>
+</div>
+<!-- Blocked Times -->
+<div class="space-y-2">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-[#121118] dark:text-white text-base font-bold leading-tight">זמנים חסומים</h3>
+<button class="flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined text-base">add_circle</span>
+                                הוסף חסימה
+                            </button>
+</div>
+<div class="space-y-2 px-2">
+<div class="flex items-center gap-4 bg-white dark:bg-white/5 rounded-lg p-3 min-h-14 justify-between">
+<div class="flex items-center gap-3">
+<div class="text-[#121118] dark:text-white flex items-center justify-center rounded-lg bg-[#f0f0f4] dark:bg-white/10 shrink-0 size-8">
+<span class="material-symbols-outlined" style="font-size: 18px;">block</span>
+</div>
+<p class="text-[#121118] dark:text-white text-sm font-normal leading-normal flex-1 truncate">09:00 - 10:30</p>
+</div>
+<button class="shrink-0 text-[#656189] dark:text-gray-400 hover:text-red-500 dark:hover:text-red-500 transition-colors">
+<div class="flex size-7 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Appointments List -->
+<div class="space-y-2 flex-1 min-h-0 overflow-y-auto pr-1">
+<h3 class="text-[#121118] dark:text-white text-base font-bold leading-tight px-2">פגישות ל-5 ביולי</h3>
+<div class="space-y-2">
+<!-- Selected Appointment Card -->
+<div class="cursor-pointer bg-white dark:bg-primary/20 rounded-xl p-4 border-2 border-primary shadow-lg ring-4 ring-primary/10">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-bold text-base text-[#121118] dark:text-white">ישראל ישראלי</p>
+<p class="text-sm text-[#656189] dark:text-gray-200">פגישת ייעוץ ראשונית</p>
+</div>
+<p class="font-semibold text-sm text-[#121118] dark:text-white">11:00</p>
+</div>
+<div class="mt-3">
+<span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/50 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-200">נקבעה</span>
+</div>
+</div>
+<!-- Other Appointment Cards -->
+<div class="cursor-pointer bg-white dark:bg-white/5 rounded-xl p-4 border-2 border-transparent hover:border-primary/20 transition-all duration-200">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-bold text-base text-[#121118] dark:text-white">דנה כהן</p>
+<p class="text-sm text-[#656189] dark:text-gray-300">טיפול פנים קלאסי</p>
+</div>
+<p class="font-semibold text-sm text-[#121118] dark:text-white">12:30</p>
+</div>
+<div class="mt-3">
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200">הושלמה</span>
+</div>
+</div>
+<div class="cursor-pointer bg-white dark:bg-white/5 rounded-xl p-4 border-2 border-transparent hover:border-primary/20 transition-all duration-200">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-bold text-base text-[#121118] dark:text-white">אבי לוי</p>
+<p class="text-sm text-[#656189] dark:text-gray-300">ייעוץ פיננסי</p>
+</div>
+<p class="font-semibold text-sm text-[#121118] dark:text-white">14:00</p>
+</div>
+<div class="mt-3">
+<span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700/50 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:text-gray-300">בוטלה</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (65%) -->
+<div class="flex-1 overflow-y-auto p-6 lg:p-10">
+<div class="bg-white dark:bg-background-dark/50 rounded-xl border border-black/5 dark:border-white/10 shadow-sm p-8 space-y-8 max-w-4xl mx-auto">
+<!-- Customer Info -->
+<div class="space-y-4">
+<h3 class="text-lg font-bold text-[#121118] dark:text-white">פרטי לקוח</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">שם מלא</label>
+<input class="mt-1 block w-full rounded-lg border-gray-200 dark:border-white/20 bg-background-light dark:bg-white/10 p-3 text-[#121118] dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary/50" type="text" value="ישראל ישראלי"/>
+</div>
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">טלפון</label>
+<input class="mt-1 block w-full rounded-lg border-gray-200 dark:border-white/20 bg-background-light dark:bg-white/10 p-3 text-[#121118] dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary/50" type="text" value="054-1234567"/>
+</div>
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">אימייל</label>
+<input class="mt-1 block w-full rounded-lg border-gray-200 dark:border-white/20 bg-background-light dark:bg-white/10 p-3 text-[#121118] dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary/50" type="email" value="israel@example.com"/>
+</div>
+</div>
+</div>
+<hr class="border-t border-black/10 dark:border-white/10"/>
+<!-- Service Details -->
+<div class="space-y-4">
+<h3 class="text-lg font-bold text-[#121118] dark:text-white">פרטי השירות</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">שם השירות</label>
+<input class="mt-1 block w-full rounded-lg border-gray-200 dark:border-white/20 bg-background-light dark:bg-white/10 p-3 text-[#121118] dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary/50" type="text" value="פגישת ייעוץ ראשונית"/>
+</div>
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">משך (דקות)</label>
+<input class="mt-1 block w-full rounded-lg border-gray-200 dark:border-white/20 bg-background-light dark:bg-white/10 p-3 text-[#121118] dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary/50" type="number" value="60"/>
+</div>
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">מחיר (₪)</label>
+<input class="mt-1 block w-full rounded-lg border-gray-200 dark:border-white/20 bg-background-light dark:bg-white/10 p-3 text-[#121118] dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary/50" type="number" value="350"/>
+</div>
+</div>
+</div>
+<hr class="border-t border-black/10 dark:border-white/10"/>
+<!-- Appointment Meta -->
+<div class="space-y-4">
+<h3 class="text-lg font-bold text-[#121118] dark:text-white">מידע נוסף</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">סטטוס</label>
+<div class="mt-1">
+<span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/50 px-4 py-1 text-sm font-medium text-blue-800 dark:text-blue-200">נקבעה</span>
+</div>
+</div>
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">תאריך</label>
+<p class="mt-1 text-base font-semibold p-3">5 ביולי, 2024</p>
+</div>
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">שעה</label>
+<p class="mt-1 text-base font-semibold p-3">11:00</p>
+</div>
+</div>
+<div>
+<label class="text-sm font-medium text-[#656189] dark:text-gray-400">הערות</label>
+<textarea class="mt-1 block w-full rounded-lg border-gray-200 dark:border-white/20 bg-background-light dark:bg-white/10 p-3 text-[#121118] dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary/50" placeholder="הוסף הערות לפגישה..." rows="4"></textarea>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row-reverse gap-3 pt-4 border-t border-black/10 dark:border-white/10">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-lg shadow-md hover:bg-primary/90 transition-all">
+                                שמור שינויים
+                            </button>
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-[#eef0f2] dark:bg-white/10 text-[#121118] dark:text-white text-sm font-bold rounded-lg hover:bg-black/10 dark:hover:bg-white/20 transition-all">
+                                ערוך
+                            </button>
+<button class="w-full sm:w-auto flex sm:mr-auto items-center justify-center gap-2 px-4 py-2.5 text-red-600 dark:text-red-400 text-sm font-medium rounded-lg hover:bg-red-500/10 transition-all">
+<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                                בטל פגישה
+                            </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
