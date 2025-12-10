@@ -2,665 +2,625 @@
 <html lang="he" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QORE - עוזר AI לעסק שלך</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QORE – העוזר העסקי הראשון שמבין את העסק שלך</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'qore-blue': '#3b82f6',
-                        'qore-purple': '#8b5cf6',
-                        'qore-teal': '#14b8a6',
+                        background: "hsl(0 0% 100%)",
+                        foreground: "hsl(222.2 84% 4.9%)",
+                        muted: "hsl(210 40% 96.1%)",
+                        border: "hsl(214.3 31.8% 91.4%)",
+                        primary: "hsl(221.2 83.2% 53.3%)",
+                        "primary-foreground": "hsl(210 40% 98%)"
                     }
                 }
             }
-        }
+        };
     </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
         body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .hero-bg {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-        }
-
-        .mockup-placeholder {
-            background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
-            border: 2px dashed rgba(102, 126, 234, 0.3);
-        }
-
-        .icon-wrapper {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        }
-
-        .step-number {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .glow-effect {
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, sans-serif;
         }
     </style>
 </head>
 
-<body class="bg-gray-50">
+<body class="min-h-screen bg-background text-foreground">
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+        <div class="mx-auto max-w-7xl px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-10">
+                    <div class="text-2xl font-bold">QORE</div>
 
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center justify-center px-4 py-20">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-                <span class="gradient-text">בעל עסק?</span>
-                כמה אתה באמת יודע על העסק שלך?
-
-                הכירו את <span class="gradient-text">QORE</span><br>
-
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-                עוזר AI שלא רק מתזמן פגישות - הוא מבין את העסק שלכם, חוזה את היום שלכם, ונותן לכם תובנות שלא ידעתם שאתם
-                צריכים.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                <button class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg">
-                    הצטרפו לגישה המוקדמת
-                </button>
-                <button
-                    class="bg-white text-gray-800 px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:shadow-xl transition-all hover:scale-105">
-                    למידע נוסף
-                </button>
-            </div>
-            <div
-                class="mockup-placeholder rounded-3xl h-96 flex items-center justify-center text-gray-400 text-lg shadow-2xl">
-                צילום מסך של המוצר
-            </div>
-        </div>
-    </section>
-
-    <!-- How it feels to use QORE -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
-                איך מרגיש להשתמש ב-<span class="gradient-text">QORE</span>
-            </h2>
-            <p class="text-xl text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-                שאלות אמיתיות. תשובות אמיתיות. בשניות.
-            </p>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Business Owner Column -->
-                <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg">
-                    <div class="icon-wrapper w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">בעל עסק</h3>
-                    <div class="space-y-4">
-                        <div class="bg-white p-4 rounded-lg">
-                            <p class="text-sm text-gray-500 mb-1">אתם שואלים:</p>
-                            <p class="font-semibold text-gray-800">"איך השבוע נראה?"</p>
-                        </div>
-                        <div class="bg-indigo-100 p-4 rounded-lg">
-                            <p class="text-sm text-indigo-600 mb-1">QORE עונה:</p>
-                            <p class="text-gray-800">"85% תפוס. יום שלישי 14:00-16:00 פנוי. הלקוחה הטובה שרה מגיעה
-                                לביקור מעקב."</p>
-                        </div>
+                    <div class="hidden md:flex items-center gap-8 text-sm">
+                            <a href="#ai" class="text-foreground/70 hover:text-foreground transition">
+                            הבינה העסקית
+                        </a>
+                            <a href="#insights" class="text-foreground/70 hover:text-foreground transition">
+                            תובנות בזמן אמת
+                        </a>
+                            <a href="#value" class="text-foreground/70 hover:text-foreground transition">
+                            למה זה משנה לעסק
+                        </a>
+                            <a href="#faq" class="text-foreground/70 hover:text-foreground transition">
+                            שאלות נפוצות
+                        </a>
                     </div>
                 </div>
 
-                <!-- Real-time Operations Column -->
-                <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl shadow-lg">
-                    <div class="icon-wrapper w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">תור בזמן אמת</h3>
-                    <div class="space-y-4">
-                        <div class="bg-white p-4 rounded-lg">
-                            <p class="text-sm text-gray-500 mb-1">אתם שואלים:</p>
-                            <p class="font-semibold text-gray-800">"מי הבא ומה הוא צריך?"</p>
-                        </div>
-                        <div class="bg-purple-100 p-4 rounded-lg">
-                            <p class="text-sm text-purple-600 mb-1">QORE עונה:</p>
-                            <p class="text-gray-800">"מייק בעוד 5 דקות - פייד + זקן. הוא מעדיף מספר 2 בצדדים. הביקור
-                                האחרון היה לפני 3 שבועות."</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Client-facing Column -->
-                <div class="card-hover bg-gradient-to-br from-teal-50 to-cyan-50 p-8 rounded-2xl shadow-lg">
-                    <div class="icon-wrapper w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">חוויית לקוח</h3>
-                    <div class="space-y-4">
-                        <div class="bg-white p-4 rounded-lg">
-                            <p class="text-sm text-gray-500 mb-1">הלקוח שואל:</p>
-                            <p class="font-semibold text-gray-800">"כמה זמן עד התור שלי?"</p>
-                        </div>
-                        <div class="bg-teal-100 p-4 rounded-lg">
-                            <p class="text-sm text-teal-600 mb-1">QORE עונה:</p>
-                            <p class="text-gray-800">"בערך 12 דקות. מעט איחור אבל תקבל התראה כשאנחנו מוכנים."</p>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-2 text-sm rounded-lg hover:bg-muted transition">
+                        התחברות
+                    </button>
+                    <button
+                        class="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 shadow-sm transition">
+                        התחילו בחינם
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- What is QORE? -->
-    <section class="py-20 px-4 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">
-                        מה זה <span class="gradient-text">QORE</span>?
-                    </h2>
-                    <p class="text-xl text-gray-700 mb-6 leading-relaxed">
-                        QORE הוא עוזר AI שבאמת מכיר את העסק שלכם. לא רק פגישות ושמות - אלא דפוסים, העדפות, שעות שיא
-                        וגורמי רווח.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        הוא לומד מכל אינטראקציה, כל צ'ק-אין, כל שירות שהושלם. ואז הוא הופך את המידע הזה לשיחות שעוזרות
-                        לכם לקבל החלטות טובות יותר, מהר יותר.
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        חשבו עליו כעל טייס משנה שתמיד שם לב - כך שאתם יכולים להתמקד במה שאתם עושים הכי טוב.
-                    </p>
-                </div>
+    <!-- HERO -->
+    <section class="relative pt-36 pb-28 px-6 overflow-hidden">
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:64px_64px]">
+        </div>
+
+        <div class="relative mx-auto max-w-6xl">
+            <div class="text-center space-y-10">
+
+                <!-- LABEL -->
                 <div
-                    class="mockup-placeholder rounded-3xl h-96 flex items-center justify-center text-gray-400 text-lg shadow-2xl">
-                    מוקאפ של המוצר
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why QORE is different -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
-                למה <span class="gradient-text">QORE</span> שונה
-            </h2>
-            <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-                רוב הכלים רק עוקבים אחרי פגישות. QORE נותן לכם תובנות שמשנות איך אתם מנהלים את העסק.
-            </p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card-hover bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                    <div class="icon-wrapper w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">אינטליגנציה חזויה</h3>
-                    <p class="text-gray-600">
-                        QORE חוזה ימים שקטים, שעות שיא ודפוסי לקוחות עוד לפני ששאלתם.
-                    </p>
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border/60 text-sm">
+                    <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                    העוזר העסקי החכם הראשון בישראל
                 </div>
 
-                <div class="card-hover bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                    <div class="icon-wrapper w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">שיחות טבעיות</h3>
-                    <p class="text-gray-600">
-                        שאלו שאלות בעברית רגילה. בלי תפריטים, בלי לחיצות - רק תשובות.
-                    </p>
+                <!-- HEADLINE -->
+                <h1 class="text-6xl font-bold leading-tight tracking-tight">
+                    לא עוד מערכת תורים.<br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-l from-foreground to-foreground/70">
+                        אלא מוח עסקי שלם שמבין אתכם.
+                    </span>
+                </h1>
+
+                <!-- SUBTEXT -->
+                <p class="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                    QORE לומד את העסק שלכם, מזהה דפוסים, מנתח ביצועים, וחוזה בעיות עוד לפני שאתם רואים אותן.
+                    במקום להתעסק במערכות, אתם פשוט שואלים שאלה – והוא עונה בעברית טבעית עם תמונה מלאה של מה שקורה בעסק.
+                </p>
+
+                <!-- CTAS -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                    <button
+                        class="px-10 h-12 rounded-full bg-primary text-primary-foreground font-medium shadow-lg hover:bg-primary/90 transition flex items-center gap-2">
+                        הצטרפו לגישה המוקדמת
+                    </button>
+
+                    <button class="px-10 h-12 rounded-full border border-border font-medium hover:bg-muted transition">
+                        גילוי יכולות הבינה
+                    </button>
                 </div>
 
-                <div class="card-hover bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                    <div class="icon-wrapper w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-10 h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">התאמה בזמן אמת</h3>
-                    <p class="text-gray-600">
-                        QORE מסתגל ללקוחות ללא תור, ביטולים ועיכובים - שומר על כולם מעודכנים.
-                    </p>
+                <!-- SOCIAL PROOF -->
+                <div class="flex justify-center gap-8 pt-12 text-sm text-foreground/70 flex-wrap">
+                    <span class="flex items-center gap-2">
+                        <div class="h-2 w-2 bg-primary rounded-full"></div>
+                        עובד מכל טלפון
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <div class="h-2 w-2 bg-primary rounded-full"></div>
+                        תוצאות מידיות
+                    </span>
                 </div>
 
-                <div class="card-hover bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                    <div class="icon-wrapper w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">תובנות לפעולה</h3>
-                    <p class="text-gray-600">
-                        ראו אילו שירותים מרוויחים, אילו לקוחות נאמנים, ואיפה אפשר להשתפר.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Three Layers -->
-    <section class="py-20 px-4 bg-gradient-to-br from-purple-50 to-pink-50">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
-                שלוש השכבות של <span class="gradient-text">QORE</span>
-            </h2>
-            <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-                פלטפורמה אחת, שלושה מצבים עוצמתיים שעובדים ביחד בצורה חלקה.
-            </p>
-            <div class="space-y-8">
-                <!-- Planning Mode -->
-                <div class="card-hover bg-white p-8 rounded-3xl shadow-xl">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <div
-                                class="inline-block bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                                מצב תכנון
+                <!-- HERO MOCKUP -->
+                <div class="pt-16">
+                    <div class="overflow-hidden border-2 border-border rounded-2xl shadow-xl bg-background">
+                        <div
+                            class="aspect-[16/9] bg-gradient-to-br from-muted via-background to-muted flex items-center justify-center">
+                            <div class="text-foreground/70 text-lg">
+                                מקום למוקאפ של שאלה → תשובה עסקית אמיתית
                             </div>
-                            <h3 class="text-3xl font-bold mb-4 text-gray-900">בנו את לוח הזמנים המושלם</h3>
-                            <p class="text-lg text-gray-600 leading-relaxed">
-                                תכננו את השבוע שלכם בפשטות גרור ושחרר. QORE מציע זמני הזמנה אופטימליים, מזהה פערים ועוזר
-                                לכם למקסם רווח בלי להזמין יותר מדי.
-                            </p>
-                        </div>
-                        <div class="mockup-placeholder rounded-2xl h-64 flex items-center justify-center text-gray-400">
-                            ממשק תכנון
                         </div>
                     </div>
                 </div>
 
-                <!-- Live Queue Mode -->
-                <div class="card-hover bg-white p-8 rounded-3xl shadow-xl">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div class="order-2 md:order-1 rounded-2xl overflow-hidden shadow-2xl">
-                            <iframe src="/live-Dashboard.html" class="w-full h-[400px] border-0 rounded-2xl"
-                                style="background:white;"></iframe>
-                        </div>
-                        <div class="order-1 md:order-2">
-                            <div
-                                class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                                מצב תור חי
-                            </div>
-                            <h3 class="text-3xl font-bold mb-4 text-gray-900">נהלו את היום בקלות</h3>
-                            <p class="text-lg text-gray-600 leading-relaxed">
-                                ראו מי פה, מי הבא ומי מאחר. QORE מטפל בצ'ק-אין, זמני המתנה והתראות כך שאתם יכולים להתמקד
-                                במתן שירות מעולה.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Insight Mode -->
-                <div class="card-hover bg-white p-8 rounded-3xl shadow-xl">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <div
-                                class="inline-block bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                                מצב תובנות
-                            </div>
-                            <h3 class="text-3xl font-bold mb-4 text-gray-900">הבינו את העסק שלכם</h3>
-                            <p class="text-lg text-gray-600 leading-relaxed">
-                                שאלו את QORE כל דבר על העסק שלכם. מגמות הכנסות, שימור לקוחות, פופולריות שירותים - קבלו
-                                תשובות מיידיות מבוססות מידע אמיתי.
-                            </p>
-                        </div>
-                        <div class="mockup-placeholder rounded-2xl h-64 flex items-center justify-center text-gray-400">
-                            לוח ניתוח
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+    <!-- AI ENGINE SECTION -->
+    <section id="ai" class="py-32 px-6 bg-foreground text-background">
+        <div class="mx-auto max-w-6xl space-y-16">
 
-    <!-- How QORE learns your business -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
-                איך <span class="gradient-text">QORE</span> לומד את העסק שלכם
-            </h2>
-            <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-                כל פעולה הופכת למידע. כל נקודת מידע הופכת לתובנה.
-            </p>
-            <div class="space-y-12">
-                <!-- Step 1 -->
-                <div class="flex gap-8 items-start">
-                    <div
-                        class="step-number flex-shrink-0 w-16 h-16 rounded-full text-white font-bold text-2xl flex items-center justify-center shadow-lg">
-                        1
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900">פעולות בעל העסק</h3>
-                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
-                            אתם לוחצים "התחל פגישה" כשלקוח מתיישב. אתם לוחצים "סיום" כשגמרתם. זהו.
-                        </p>
-                        <div class="bg-indigo-50 p-6 rounded-xl">
-                            <p class="text-gray-700">
-                                <strong>QORE לומד:</strong> כמה זמן לוקח כל שירות, מתי השעות עמוסות, ואילו שירותים
-                                מתבצעים לעתים קרובות ביחד.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <!-- TITLE -->
+            <div class="text-center space-y-6">
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                    QORE לומד את העסק שלכם —
+                    <span class="opacity-70">ומתפתח יחד איתו.</span>
+                </h2>
 
-                <!-- Step 2 -->
-                <div class="flex gap-8 items-start">
-                    <div
-                        class="step-number flex-shrink-0 w-16 h-16 rounded-full text-white font-bold text-2xl flex items-center justify-center shadow-lg">
-                        2
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900">צ'ק-אין של לקוחות</h3>
-                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
-                            לקוחות סורקים קוד QR כשהם מגיעים. הם מרוויחים נקודות נאמנות אוטומטית.
-                        </p>
-                        <div class="bg-purple-50 p-6 rounded-xl">
-                            <p class="text-gray-700">
-                                <strong>QORE לומד:</strong> מי מגיע בזמן, מי קבוע, ואילו לקוחות מעדיפים אילו שירותים.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="flex gap-8 items-start">
-                    <div
-                        class="step-number flex-shrink-0 w-16 h-16 rounded-full text-white font-bold text-2xl flex items-center justify-center shadow-lg">
-                        3
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900">מידע הופך לתובנות</h3>
-                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
-                            QORE מנתח דפוסים לאורך שבועות וחודשים, והופך אירועים גולמיים לאינטליגנציה שימושית.
-                        </p>
-                        <div class="bg-teal-50 p-6 rounded-xl">
-                            <p class="text-gray-700">
-                                <strong>אתם מקבלים:</strong> תזמון חזוי, תחזית הכנסות, התראות שימור לקוחות והמלצות
-                                מותאמות אישית.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <p class="text-xl opacity-80 max-w-3xl mx-auto leading-relaxed">
+                    כל פעולה שאתם עושים, כל לקוח שמגיע, כל שינוי קטן ביום – הכל הופך למידע.
+                    QORE מנתח את זה ברצף, מבין את דפוסי העבודה שלכם, ומתרגם אותם לתובנות אמיתיות
+                    שמגלות מה באמת קורה בעסק.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- Loyalty System -->
-    <section class="py-20 px-4 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">
-                        <span class="gradient-text">מערכת נאמנות</span> מובנית
-                    </h2>
-                    <p class="text-xl text-gray-700 mb-6 leading-relaxed">
-                        תגמלו את הקבועים שלכם אוטומטית. בלי כרטיסי ניקוב, בלי אפליקציות להורדה, בלי טרחה.
+            <!-- 3 CARDS -->
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- CARD 1 -->
+                <div
+                    class="bg-background/10 border border-background/20 backdrop-blur-sm p-8 rounded-xl space-y-4 hover:bg-background/20 transition-all">
+                    <div class="h-12 w-12 rounded-xl bg-background/20 flex items-center justify-center">
+                        <!-- icon -->
+                        <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2">
+                            <path d="M12 20v-6"></path>
+                            <path d="M6 20v-4"></path>
+                            <path d="M18 20v-10"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold">למידת העסק</h3>
+
+                    <p class="opacity-80 leading-relaxed">
+                        QORE לומד במהירות את דפוסי העבודה שלכם: זמני שירות אמיתיים, עומסים שבועיים,
+                        לקוחות שמגיעים קבוע, ושעות שבהן העסק עובד טוב — או טוב פחות.
+                        כל נתון כזה הופך למודל שמבין אתכם טוב יותר ויותר.
                     </p>
-                    <ul class="space-y-4 text-lg text-gray-600">
+                </div>
+
+                <!-- CARD 2 -->
+                <div
+                    class="bg-background/10 border border-background/20 backdrop-blur-sm p-8 rounded-xl space-y-4 hover:bg-background/20 transition-all">
+                    <div class="h-12 w-12 rounded-xl bg-background/20 flex items-center justify-center">
+                        <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l3 3"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold">חיזוי והתראות</h3>
+
+                    <p class="opacity-80 leading-relaxed">
+                        QORE מנבא עומסים צפויים, מזהה עליות בביקוש, ומתריע מראש על נקודות בעייתיות —
+                        עוד לפני שהן הופכות לבעיה אמיתית.
+                        הוא יודע להגיד לכם מתי צפוי עומס, איפה תיווצר המתנה, ומתי כדאי להיערך מראש.
+                    </p>
+                </div>
+
+                <!-- CARD 3 -->
+                <div
+                    class="bg-background/10 border border-background/20 backdrop-blur-sm p-8 rounded-xl space-y-4 hover:bg-background/20 transition-all">
+                    <div class="h-12 w-12 rounded-xl bg-background/20 flex items-center justify-center">
+                        <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2">
+                            <path d="M3 5h18"></path>
+                            <path d="M3 12h18"></path>
+                            <path d="M3 19h18"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold">הבנה בשפה טבעית</h3>
+
+                    <p class="opacity-80 leading-relaxed">
+                        אין לוחות בקרה מסובכים, אין גרפים שאי־אפשר להבין.
+                        אתם פשוט שואלים שאלה —
+                        <span class="opacity-100 font-semibold">ו-QORE עונה בעברית ברורה</span>
+                        עם מידע מדויק מהשטח:
+                        הכנסות, עומסים, לקוחות, דפוסים, וגם המלצות לפעולה.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- INSIGHTS SECTION -->
+    <section id="insights" class="py-32 px-6">
+        <div class="mx-auto max-w-6xl space-y-20">
+
+            <div class="text-center space-y-6">
+                <h2 class="text-4xl md:text-5xl font-bold">
+                    תשובות אמיתיות.
+                    <span class="text-foreground/70">בזמן אמת.</span>
+                </h2>
+
+                <p class="text-xl text-foreground/70 max-w-3xl mx-auto">
+                    QORE מנתח את כל מה שקורה בעסק ומחזיר לכם תמונה אחת ברורה —
+                    בלי לאקסל, בלי דוחות, בלי כאב ראש.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <!-- TEXT SIDE -->
+                <div class="space-y-10">
+
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-bold">שאלות שאתם באמת שואלים</h3>
+
+                        <p class="text-foreground/70 leading-relaxed">
+                            במקום לבדוק נתונים בעצמכם, QORE נותן לכם תשובות מידיות על מה שקורה:
+                        </p>
+
+                        <ul class="space-y-4 text-lg text-foreground/80">
+                            <li class="flex items-start gap-3">
+                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                מה צפוי השבוע מבחינת עומסים?
+                            </li>
+
+                            <li class="flex items-start gap-3">
+                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                אילו לקוחות מפסיקים להגיע – ולמה?
+                            </li>
+
+                            <li class="flex items-start gap-3">
+                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                איזה שירותים באמת מרוויחים הכי הרבה?
+                            </li>
+
+                            <li class="flex items-start gap-3">
+                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                איך ייראה סוף היום? האם נסיים בזמן?
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-bold">בלי לגעת במערכת</h3>
+
+                        <p class="text-foreground/70 leading-relaxed">
+                            אין צורך "להתעסק" במערכת. QORE צופה, לומד, ומעדכן אתכם כשקורה משהו חשוב.
+                            ככה אתם פנויים לעבוד — והוא פנוי לחשוב בשבילכם.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MOCKUP SIDE -->
+                <div class="overflow-hidden rounded-2xl border-2 border-border shadow-xl bg-background">
+                        <div class="aspect-[4/3] flex items-center justify-center bg-muted/40">
+                            <span class="text-foreground/70 text-xl">
+                                מקום למוקאפ של תשובה עסקית (כמו: “היום צפוי עומס כבד בשעה 17:00”)
+                            </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- VALUE FOR BUSINESS -->
+    <section id="value" class="py-32 px-6 bg-muted/30">
+        <div class="mx-auto max-w-6xl space-y-20">
+
+            <div class="text-center space-y-6">
+                <h2 class="text-4xl md:text-5xl font-bold">
+                    מה זה נותן לבעל העסק?
+                </h2>
+
+                <p class="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                    QORE לא חוסך לכם זמן בלבד —
+                    הוא מחזק את העסק כולו: הכנסות, שימור לקוחות, ויציבות יום־יומית.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- CARD 1 -->
+                <div class="bg-background border border-border rounded-xl p-8 shadow-sm space-y-4">
+                    <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2">
+                            <path d="M4 4h16v16H4z"></path>
+                            <path d="M4 9h16"></path>
+                            <path d="M9 15h1"></path>
+                            <path d="M14 15h1"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-xl font-bold">שליטה ברורה על העסק</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        סוף סוף יש לכם תשובה לשאלה:
+                        *"מה באמת קורה בעסק שלי?"*
+                        בלי מערכות, בלי דוחות, פשוט — הבנה אמיתית בזמן אמת.
+                    </p>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="bg-background border border-border rounded-xl p-8 shadow-sm space-y-4">
+                    <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2">
+                            <path d="M12 20v-8"></path>
+                            <path d="M6 20V10"></path>
+                            <path d="M18 20v-4"></path>
+                            <path d="M3 3h18v4H3z"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-xl font-bold">הכנסות יציבות יותר</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        מערכות חכמות של חיזוי, זיהוי לקוחות נעלמים, וניהול עומסים —
+                        שומרות על יום עבודה מלא ועל הכנסות שלא נעלמות בגלל בלאגן.
+                    </p>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="bg-background border border-border rounded-xl p-8 shadow-sm space-y-4">
+                    <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l3 3"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-xl font-bold">יותר זמן לעבודה אמיתית</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        QORE מוריד מכם עומסים: התעסקויות, שאלות, תזכורות, בירורים —
+                        כך שאתם פנויים לתת שירות, לא לנהל מערכות.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- CUSTOMER VALUE SECTION -->
+    <section id="customers" class="py-32 px-6">
+        <div class="mx-auto max-w-6xl space-y-20">
+
+            <div class="text-center space-y-6">
+                <h2 class="text-4xl md:text-5xl font-bold">
+                    ומה עם הלקוחות שלכם?
+                </h2>
+
+                <p class="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                    כשלקוחות מבינים מה קורה, כמה זמן נשאר, ומה הסטטוס שלהם —
+                    הם מרגישים בטוחים יותר, מרוצים יותר, וחוזרים יותר.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <!-- TEXT -->
+                <div class="space-y-10">
+
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-bold">חוויה שמרגישה מקצועית</h3>
+
+                        <p class="text-foreground/70 leading-relaxed">
+                            QORE נותן ללקוחות מידע בזמן אמת בלי שהם צריכים לשאול:
+                            מתי הם נכנסים, כמה אנשים לפניהם, האם קיים עיכוב, ומה הצפי לסיום.
+                            הם מרגישים שיש סדר ושליטה — ואתם מרוויחים שקט.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-bold">וכשלקוח מרוצה? הוא חוזר.</h3>
+
+                        <p class="text-foreground/70 leading-relaxed">
+                            החוויה החלקה הזאת מייצרת נאמנות אמיתית.
+                            לקוחות שמרגישים שמכבדים את הזמן שלהם —
+                            חוזרים יותר, ממליצים יותר, ומגדילים את ההכנסות.
+                        </p>
+                    </div>
+
+                    <ul class="space-y-4 text-lg text-foreground/80">
                         <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>לקוחות סורקים קודי QR ומרוויחים נקודות מיידית</span>
+                            <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+                                <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"></path>
+                                </svg>
+                            </div>
+                            זמני המתנה ברורים ושקופים
                         </li>
+
                         <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>אתם קובעים את הפרסים - שירות חינם, הנחות או הטבות</span>
+                            <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+                                <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"></path>
+                                </svg>
+                            </div>
+                            פחות שאלות ופחות עצבים מלקוחות
                         </li>
+
                         <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>QORE עוקב אחרי הכל ומתריע לכם כשלקוחות מגיעים לאבני דרך</span>
+                            <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+                                <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"></path>
+                                </svg>
+                            </div>
+                            לקוחות מבינים שהעסק שלכם מתנהל ברמה גבוהה
                         </li>
                     </ul>
                 </div>
-                <div class="relative">
-                    <div
-                        class="mockup-placeholder glow-effect rounded-3xl h-96 flex items-center justify-center text-gray-400 text-lg shadow-2xl">
-                        מוקאפ טלפון עם כרטיס נאמנות
+
+                <!-- CUSTOMER MOCKUP -->
+                <div class="overflow-hidden rounded-2xl border-2 border-border shadow-xl bg-background">
+                    <div class="aspect-[16/10] flex items-center justify-center bg-muted/40">
+                        <span class="text-foreground/70 text-xl">
+                            מקום למוקאפ של חוויית לקוח (תור, זמן משוער וכו')
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-32 px-6 bg-muted/30">
+        <div class="mx-auto max-w-5xl space-y-16">
+
+            <div class="text-center space-y-6">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+                    שאלות נפוצות
+                </h2>
+                <p class="text-lg text-foreground/70 max-w-3xl mx-auto">
+                    איך זה עובד? מה הוא לומד? איך הוא יודע? הנה הכל.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+
+                <!-- FAQ ITEM -->
+                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
+                    <h3 class="text-xl font-bold">איך QORE לומד את העסק?</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        הוא אוסף נתונים טבעיים מתוך העבודה היומיומית שלכם:
+                        זמני שירות, הגעה של לקוחות, עומסים, ביטולים, סוגי שירותים ועוד.
+                        המידע הזה מצטבר ומאפשר לו לזהות דפוסים, לחזות בעיות,
+                        ולהבין את המבנה האמיתי של העסק שלכם.
+                    </p>
+                </div>
+
+                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
+                    <h3 class="text-xl font-bold">איך הוא נותן תובנות מדויקות?</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        QORE לא מסתמך על נתונים שצריך להזין ידנית.
+                        הכל נאסף אוטומטית מתוך מה שקורה בפועל —
+                        ולכן התובנות שלו מדויקות ומתעדכנות כל רגע.
+                    </p>
+                </div>
+
+                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
+                    <h3 class="text-xl font-bold">איך זה עובד בשיחה טבעית?</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        אתם פשוט שואלים אותו שאלות בעברית.
+                        כמו:
+                        "מה מצב היום?"
+                        "כמה הכנסות עשיתי השבוע?"
+                        "מי הלקוחות שלא הגיעו בזמן האחרון?"
+                        והוא עונה בצורה ברורה ופשוטה — בלי דשבורדים קשהים ובלי פירוק נתונים.
+                    </p>
+                </div>
+
+                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
+                    <h3 class="text-xl font-bold">האם המערכת תומכת בניהול תורים?</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        כן — אבל זה רק חלק קטן ממנה.
+                        התורים הם מקור מידע שמאפשר למערכת להבין את העסק,
+                        לא המטרה המרכזית.
+                        QORE היא קודם כל בינה עסקית, לא מערכת תורים.
+                    </p>
+                </div>
+
+                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
+                    <h3 class="text-xl font-bold">איך זה עוזר לי להגדיל הכנסות?</h3>
+                    <p class="text-foreground/70 leading-relaxed">
+                        זיהוי מוקדם של לקוחות שנעלמים, חיזוי עומסים, המלצות על שעות חזקות,
+                        ניתוח שירותים רווחיים וייעול העבודה —
+                        כל אלה מובילים לשיפור ישיר ומתמשך בהכנסות.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <!-- CTA SECTION -->
+    <section class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-foreground via-foreground to-foreground/90"></div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:64px_64px]">
+        </div>
+
+        <div class="relative mx-auto max-w-4xl text-center space-y-10">
+
+            <h2 class="text-4xl md:text-5xl font-bold text-background leading-tight">
+                הגיע הזמן לעבוד עם עוזר שמבין את העסק יותר טוב מכולם.
+            </h2>
+
+            <p class="text-xl text-background/70 max-w-2xl mx-auto leading-relaxed">
+                הצטרפו לגישה המוקדמת וקבלו את המערכת שתלווה אתכם, תענה לכם,
+                ותאיר את מה שלא הייתם רואים לבד.
+            </p>
+
+            <div class="pt-6">
+                <div class="inline-flex max-w-lg w-full p-2 bg-background rounded-2xl shadow-2xl">
+                    <div class="flex flex-col sm:flex-row gap-2 w-full">
+                        <input type="email" placeholder="כתבו את המייל שלכם"
+                            class="flex-1 px-4 py-3 rounded-lg bg-muted focus:outline-none focus:ring-2 focus:ring-primary text-right text-foreground" />
+                        <button
+                            class="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition">
+                            הצטרפו עכשיו
+                        </button>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Core Features -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
-                תכונות מרכזיות
-            </h2>
-            <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-                כל מה שאתם צריכים כדי להפעיל עסק שירותים מודרני.
-            </p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">📅</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">תזמון חכם</h3>
-                    <p class="text-gray-600">לוח שנה גרור ושחרר עם הצעות מונעות AI</p>
+
+
+
+    <!-- FOOTER -->
+    <footer class="border-t border-border py-12 px-6">
+        <div class="mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+
+                <div class="flex items-center gap-3">
+                    <span class="text-xl font-bold">QORE</span>
+                    <span class="text-sm text-foreground/70">© 2025 כל הזכויות שמורות</span>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">⏱️</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">תור בזמן אמת</h3>
-                    <p class="text-gray-600">ראו מי מחכה, מי הבא וזמני המתנה מדויקים</p>
+                <div class="flex items-center gap-6 text-sm text-foreground/70">
+                    <a href="#" class="hover:text-foreground transition">תנאי שימוש</a>
+                    <a href="#" class="hover:text-foreground transition">מדיניות פרטיות</a>
+                    <a href="#" class="hover:text-foreground transition">צור קשר</a>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">💬</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">ממשק צ'אט AI</h3>
-                    <p class="text-gray-600">שאלו שאלות וקבלו תשובות מיידיות ואינטליגנטיות</p>
-                </div>
-
-                <div class="card-hover bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">📊</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">ניתוח הכנסות</h3>
-                    <p class="text-gray-600">עקבו אחרי הכנסות, מגמות ורווחיות בקלות</p>
-                </div>
-
-                <div class="card-hover bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">🎁</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">פרסי נאמנות</h3>
-                    <p class="text-gray-600">מעקב נקודות אוטומטי ופדיון פרסים</p>
-                </div>
-
-                <div class="card-hover bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">👥</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">פרופילי לקוחות</h3>
-                    <p class="text-gray-600">זכרו העדפות, היסטוריה והערות מיוחדות</p>
-                </div>
-
-                <div class="card-hover bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">🔔</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">התראות חכמות</h3>
-                    <p class="text-gray-600">תזכורות אוטומטיות ועדכונים בזמן אמת</p>
-                </div>
-
-                <div class="card-hover bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-2xl shadow-lg">
-                    <div class="text-4xl mb-4">📱</div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">צ'ק-אין QR</h3>
-                    <p class="text-gray-600">מעקב הגעה ללא מגע עבור לקוחות</p>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Future Vision -->
-    <section class="py-20 px-4 bg-gradient-to-br from-purple-100 via-pink-100 to-indigo-100">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-                העתיד של <span class="gradient-text">QORE</span>
-            </h2>
-            <p class="text-xl text-gray-600 mb-16 max-w-3xl mx-auto">
-                אנחנו רק מתחילים. הנה מה שמגיע הלאה.
-            </p>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white/80 backdrop-blur p-8 rounded-3xl shadow-xl">
-                    <div class="text-5xl mb-4">🤖</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">עוזר קולי</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        דברו עם QORE בזמן שאתם עובדים. שאלו שאלות, עדכנו לוחות זמנים וקבלו תובנות - הכל ללא ידיים בזמן
-                        שאתם עם לקוחות.
-                    </p>
-                </div>
-
-                <div class="bg-white/80 backdrop-blur p-8 rounded-3xl shadow-xl">
-                    <div class="text-5xl mb-4">🌐</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">פורטל הזמנה ללקוחות</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        תנו ללקוחות להזמין אונליין עם זיהוי זמינות חכם. QORE לומד דפוסי הזמנה אופטימליים ומונע הזמנה
-                        יתרה אוטומטית.
-                    </p>
-                </div>
-
-                <div class="bg-white/80 backdrop-blur p-8 rounded-3xl shadow-xl">
-                    <div class="text-5xl mb-4">💳</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">תשלומים משולבים</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        קבלו תשלומים ישירות דרך QORE. עקבו אחרי הכנסות בזמן אמת, בצעו חשבוניות אוטומטיות ונהלו טיפים
-                        בצורה חלקה.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Who is QORE for? -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-                למי מיועד <span class="gradient-text">QORE</span>?
-            </h2>
-            <p class="text-xl text-gray-600 mb-12">
-                נבנה עבור אנשי מקצוע בשירותים שרוצים לעבוד חכם יותר, לא קשה יותר.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span
-                    class="bg-gradient-to-r from-indigo-100 to-purple-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    💇 ספרים
-                </span>
-                <span
-                    class="bg-gradient-to-r from-purple-100 to-pink-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    💅 סלוני ציפורניים
-                </span>
-                <span
-                    class="bg-gradient-to-r from-pink-100 to-red-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    💆 מכוני יופי
-                </span>
-                <span
-                    class="bg-gradient-to-r from-teal-100 to-cyan-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    🏋️ מאמנים אישיים
-                </span>
-                <span
-                    class="bg-gradient-to-r from-blue-100 to-indigo-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    🧘 אולפני יוגה
-                </span>
-                <span
-                    class="bg-gradient-to-r from-green-100 to-emerald-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    💆‍♀️ שירותי ספא
-                </span>
-                <span
-                    class="bg-gradient-to-r from-yellow-100 to-orange-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    🎨 אמני קעקועים
-                </span>
-                <span
-                    class="bg-gradient-to-r from-violet-100 to-purple-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    💇‍♀️ מספרות
-                </span>
-                <span
-                    class="bg-gradient-to-r from-orange-100 to-red-100 text-gray-800 px-6 py-3 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all">
-                    🧖 מרכזי בריאות
-                </span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-32 px-4 gradient-bg">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                מוכנים לשנות את העסק שלכם?
-            </h2>
-            <p class="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
-                הצטרפו לרשימת ההמתנה והיו בין הראשונים לחוות את עתיד ניהול השירותים.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                <input type="email" placeholder="הכניסו את המייל שלכם"
-                    class="flex-1 px-6 py-4 rounded-full text-lg focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg" />
-                <button
-                    class="bg-white text-purple-700 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105">
-                    הצטרפו לרשימה
-                </button>
-            </div>
-            <p class="text-white/70 mt-6 text-sm">
-                לא נדרש כרטיס אשראי. גישה מוקדמת מתחילה ברבעון השני של 2025.
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 px-4">
-        <div class="max-w-6xl mx-auto text-center">
-            <h3 class="text-3xl font-bold gradient-text mb-4">QORE</h3>
-            <p class="text-gray-400 mb-6">העסק שלכם, בחזון חדש עם AI</p>
-            <div class="flex justify-center gap-6 text-gray-400 text-sm">
-                <a href="#" class="hover:text-white transition-colors">מדיניות פרטיות</a>
-                <a href="#" class="hover:text-white transition-colors">תנאי שימוש</a>
-                <a href="#" class="hover:text-white transition-colors">צור קשר</a>
-            </div>
-            <p class="text-gray-500 text-sm mt-8">© 2025 QORE. כל הזכויות שמורות.</p>
         </div>
     </footer>
 
