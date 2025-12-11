@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QORE – העוזר העסקי הראשון שמבין את העסק שלך</title>
+    <title>Ozerli – העוזר העסקי הראשון שמבין את העסק שלך</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -30,39 +30,71 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
                 Roboto, sans-serif;
         }
+
+        /* Added smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        /* Added custom animations for enhanced UI */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.6s ease-out;
+        }
+
+        /* Added glass morphism effect for navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
     </style>
 </head>
 
 <body class="min-h-screen bg-background text-foreground">
     <!-- NAV -->
-    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
-        <div class="mx-auto max-w-7xl px-6 py-4">
+    <!-- Enhanced navbar with better shadow, spacing, and glass effect -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-border/30 glass-nav shadow-sm">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-10">
-                    <div class="text-2xl font-bold">QORE</div>
+                <div class="flex items-center gap-8 lg:gap-12">
+                    <!-- Enhanced logo with gradient effect -->
+                    <div class="text-2xl font-bold bg-gradient-to-l from-primary to-foreground bg-clip-text text-transparent">
+                        Ozerli
+                    </div>
 
-                    <div class="hidden md:flex items-center gap-8 text-sm">
-                            <a href="#ai" class="text-foreground/70 hover:text-foreground transition">
+                    <!-- Improved navigation links with better hover states -->
+                    <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
+                        <a href="#ai" class="text-foreground/60 hover:text-primary transition-colors duration-200">
                             הבינה העסקית
                         </a>
-                            <a href="#insights" class="text-foreground/70 hover:text-foreground transition">
+                        <a href="#insights" class="text-foreground/60 hover:text-primary transition-colors duration-200">
                             תובנות בזמן אמת
                         </a>
-                            <a href="#value" class="text-foreground/70 hover:text-foreground transition">
+                        <a href="#value" class="text-foreground/60 hover:text-primary transition-colors duration-200">
                             למה זה משנה לעסק
                         </a>
-                            <a href="#faq" class="text-foreground/70 hover:text-foreground transition">
+                        <a href="#faq" class="text-foreground/60 hover:text-primary transition-colors duration-200">
                             שאלות נפוצות
                         </a>
                     </div>
                 </div>
 
+                <!-- Enhanced CTA button with better shadow and hover effect -->
                 <div class="flex items-center gap-3">
-                    <button class="px-4 py-2 text-sm rounded-lg hover:bg-muted transition">
-                        התחברות
-                    </button>
                     <button
-                        class="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 shadow-sm transition">
+                        class="px-5 py-2.5 text-sm font-semibold bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 hover:scale-105">
                         התחילו בחינם
                     </button>
                 </div>
@@ -71,417 +103,312 @@
     </nav>
 
     <!-- HERO -->
-    <section class="relative pt-36 pb-28 px-6 overflow-hidden">
+    <!-- Enhanced hero section with better spacing and visual depth -->
+    <section class="relative pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-6 overflow-hidden">
         <div
             class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:64px_64px]">
         </div>
+        
+        <!-- Added gradient overlay for depth -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50"></div>
 
-        <div class="relative mx-auto max-w-6xl">
-            <div class="text-center space-y-10">
+        <div class="relative mx-auto max-w-7xl">
+            <div class="text-center space-y-8 sm:space-y-12">
 
                 <!-- LABEL -->
+                <!-- Enhanced badge with better shadow and animation -->
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border/60 text-sm">
-                    <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-                    העוזר העסקי החכם הראשון בישראל
+                    class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-primary/5 border border-primary/20 text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <span class="h-2 w-2 rounded-full bg-primary animate-pulse shadow-sm shadow-primary"></span>
+                    העוזר העסקי החכם של בעלי עסקים בישראל
                 </div>
 
                 <!-- HEADLINE -->
-                <h1 class="text-6xl font-bold leading-tight tracking-tight">
-                    לא עוד מערכת תורים.<br />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-l from-foreground to-foreground/70">
-                        אלא מוח עסקי שלם שמבין אתכם.
+                <!-- Improved typography hierarchy and gradient -->
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight px-4">
+                    פחות ניהול. יותר זמן לעבוד.<br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-l from-primary via-foreground to-foreground/90">
+                        Ozerli עושה סדר בכל מה שקורה בעסק.
                     </span>
                 </h1>
 
                 <!-- SUBTEXT -->
-                <p class="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-                    QORE לומד את העסק שלכם, מזהה דפוסים, מנתח ביצועים, וחוזה בעיות עוד לפני שאתם רואים אותן.
-                    במקום להתעסק במערכות, אתם פשוט שואלים שאלה – והוא עונה בעברית טבעית עם תמונה מלאה של מה שקורה בעסק.
+                <!-- Enhanced readability with better line height and spacing -->
+                <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed px-4">
+                    במקום להתמודד עם ביטולים, עומסים, שאלות ובלגן - פשוט שואלים את Ozerli כל שאלה על העסק,
+                    ומקבלים תשובה ברורה בזמן אמת. המערכת לומדת את צורת העבודה שלכם ומציגה תמונת מצב מלאה,
+                    בלי דוחות ובלי התעסקות.
                 </p>
 
-                <!-- CTAS -->
-                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                <!-- CTAs -->
+                <!-- Enhanced CTA buttons with better shadows and hover effects -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-6 px-4">
                     <button
-                        class="px-10 h-12 rounded-full bg-primary text-primary-foreground font-medium shadow-lg hover:bg-primary/90 transition flex items-center gap-2">
+                        class="px-10 h-14 rounded-full bg-primary text-primary-foreground font-semibold shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
                         הצטרפו לגישה המוקדמת
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                        </svg>
                     </button>
 
-                    <button class="px-10 h-12 rounded-full border border-border font-medium hover:bg-muted transition">
-                        גילוי יכולות הבינה
+                    <button class="px-10 h-14 rounded-full border-2 border-border/60 font-semibold hover:bg-muted hover:border-border transition-all duration-300 hover:scale-105 shadow-sm">
+                        ראו איך זה עובד
                     </button>
                 </div>
 
                 <!-- SOCIAL PROOF -->
-                <div class="flex justify-center gap-8 pt-12 text-sm text-foreground/70 flex-wrap">
-                    <span class="flex items-center gap-2">
-                        <div class="h-2 w-2 bg-primary rounded-full"></div>
-                        עובד מכל טלפון
+                <!-- Improved social proof design with better visual balance -->
+                <div class="flex justify-center gap-6 lg:gap-10 pt-12 sm:pt-16 text-sm sm:text-base text-foreground/70 flex-wrap px-4">
+                    <span class="flex items-center gap-2.5 hover:text-foreground transition-colors">
+                        <div class="h-2.5 w-2.5 bg-primary rounded-full shadow-sm shadow-primary"></div>
+                        תובנות בזמן אמת
                     </span>
-                    <span class="flex items-center gap-2">
-                        <div class="h-2 w-2 bg-primary rounded-full"></div>
-                        תוצאות מידיות
+                    <span class="flex items-center gap-2.5 hover:text-foreground transition-colors">
+                        <div class="h-2.5 w-2.5 bg-primary rounded-full shadow-sm shadow-primary"></div>
+                        שקיפות מלאה ללקוחות
                     </span>
-                </div>
-
-                <!-- HERO MOCKUP -->
-                <div class="pt-16">
-                    <div class="overflow-hidden border-2 border-border rounded-2xl shadow-xl bg-background">
-                        <div
-                            class="aspect-[16/9] bg-gradient-to-br from-muted via-background to-muted flex items-center justify-center">
-                            <div class="text-foreground/70 text-lg">
-                                מקום למוקאפ של שאלה → תשובה עסקית אמיתית
-                            </div>
-                        </div>
-                    </div>
+                    <span class="flex items-center gap-2.5 hover:text-foreground transition-colors">
+                        <div class="h-2.5 w-2.5 bg-primary rounded-full shadow-sm shadow-primary"></div>
+                        תשובה לכל שאלה עסקית
+                    </span>
+                    <span class="flex items-center gap-2.5 hover:text-foreground transition-colors">
+                        <div class="h-2.5 w-2.5 bg-primary rounded-full shadow-sm shadow-primary"></div>
+                        חיסכון גדול בזמן ובניהול
+                    </span>
                 </div>
 
             </div>
         </div>
     </section>
-    <!-- AI ENGINE SECTION -->
-    <section id="ai" class="py-32 px-6 bg-foreground text-background">
-        <div class="mx-auto max-w-6xl space-y-16">
 
-            <!-- TITLE -->
-            <div class="text-center space-y-6">
-                <h2 class="text-4xl md:text-5xl font-bold leading-tight">
-                    QORE לומד את העסק שלכם —
-                    <span class="opacity-70">ומתפתח יחד איתו.</span>
-                </h2>
+    <!-- PROBLEMS SECTION -->
+    <!-- Added AI section ID for navigation -->
+    <section id="ai" class="py-20 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-muted/20 to-muted/40">
+        <div class="mx-auto max-w-6xl text-center space-y-12 sm:space-y-16">
 
-                <p class="text-xl opacity-80 max-w-3xl mx-auto leading-relaxed">
-                    כל פעולה שאתם עושים, כל לקוח שמגיע, כל שינוי קטן ביום – הכל הופך למידע.
-                    QORE מנתח את זה ברצף, מבין את דפוסי העבודה שלכם, ומתרגם אותם לתובנות אמיתיות
-                    שמגלות מה באמת קורה בעסק.
-                </p>
+            <!-- Enhanced heading with better typography -->
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight px-4">
+                ניהול העסק נהיה מורכב מדי.
+                <span class="text-foreground/60">הגיע הזמן לסדר.</span>
+            </h2>
+
+            <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed px-4">
+                ביטולים של הרגע האחרון, לקוחות שלא מגיעים, שאלות בלי סוף,
+                עומסים לא צפויים, ונתונים שמפוזרים בין הודעות, מחברות ומערכות שונות -
+                כך נראה היום של רוב בעלי העסקים.
+            </p>
+
+            <!-- Enhanced card grid with better shadows and hover effects -->
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-8 text-right">
+
+                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">ביטולים ושינויים שלא נגמרים</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        לקוחות מבטלים ברגע האחרון, משנים שעות, לא מגיעים - ואתם צריכים לרדוף אחרי לו"ז שמתפרק.
+                    </p>
+                </div>
+
+                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">אין תמונת מצב אמיתית</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        כמה לקוחות מגיעים היום? כמה הכנסות צפויות? איפה עומד היום? זה מידע שאף פעם לא ברור עד הסוף.
+                    </p>
+                </div>
+
+                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">לקוחות שואלים בלי סוף</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        "מתי התור שלי?", "כמה זמן נשאר?", "האם יש עיכוב?" -
+                        ושום מערכת לא באמת נותנת להם תשובה בזמן אמת.
+                    </p>
+                </div>
+
+                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">אין למי לשאול שאלות על העסק</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        כמה הרווחתי השבוע? מי הלקוחות שנעלמים? איזה שירות באמת רווחי?
+                        המידע קיים - אבל לא נגיש ולא מובן.
+                    </p>
+                </div>
+
             </div>
 
-            <!-- 3 CARDS -->
-            <div class="grid md:grid-cols-3 gap-6">
+        </div>
+    </section>
 
-                <!-- CARD 1 -->
-                <div
-                    class="bg-background/10 border border-background/20 backdrop-blur-sm p-8 rounded-xl space-y-4 hover:bg-background/20 transition-all">
-                    <div class="h-12 w-12 rounded-xl bg-background/20 flex items-center justify-center">
-                        <!-- icon -->
-                        <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            stroke-width="2">
-                            <path d="M12 20v-6"></path>
-                            <path d="M6 20v-4"></path>
-                            <path d="M18 20v-10"></path>
-                        </svg>
-                    </div>
+    <!-- SOLUTION SECTION -->
+    <!-- Enhanced spacing and card design -->
+    <section class="py-20 sm:py-32 px-4 sm:px-6">
+        <div class="mx-auto max-w-6xl text-center space-y-12 sm:space-y-16">
 
-                    <h3 class="text-2xl font-bold">למידת העסק</h3>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight px-4">
+                הפתרון לבלגן היומיומי של העסק
+            </h2>
 
-                    <p class="opacity-80 leading-relaxed">
-                        QORE לומד במהירות את דפוסי העבודה שלכם: זמני שירות אמיתיים, עומסים שבועיים,
-                        לקוחות שמגיעים קבוע, ושעות שבהן העסק עובד טוב — או טוב פחות.
-                        כל נתון כזה הופך למודל שמבין אתכם טוב יותר ויותר.
-                    </p>
-                </div>
+            <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed px-4">
+                Ozerli מסדר את כל מה שדורש זמן, מחשבה וניהול.
+                ביטולים, עומסים, שאלות, תזמון, מעקב אחרי לקוחות –
+                הכל נאסף, מובן ומטופל אוטומטית כדי להשאיר אתכם פנויים לעבודה.
+            </p>
 
-                <!-- CARD 2 -->
-                <div
-                    class="bg-background/10 border border-background/20 backdrop-blur-sm p-8 rounded-xl space-y-4 hover:bg-background/20 transition-all">
-                    <div class="h-12 w-12 rounded-xl bg-background/20 flex items-center justify-center">
-                        <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l3 3"></path>
-                        </svg>
-                    </div>
+            <!-- Enhanced feature cards with gradients and better icons -->
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mt-16">
 
-                    <h3 class="text-2xl font-bold">חיזוי והתראות</h3>
-
-                    <p class="opacity-80 leading-relaxed">
-                        QORE מנבא עומסים צפויים, מזהה עליות בביקוש, ומתריע מראש על נקודות בעייתיות —
-                        עוד לפני שהן הופכות לבעיה אמיתית.
-                        הוא יודע להגיד לכם מתי צפוי עומס, איפה תיווצר המתנה, ומתי כדאי להיערך מראש.
-                    </p>
-                </div>
-
-                <!-- CARD 3 -->
-                <div
-                    class="bg-background/10 border border-background/20 backdrop-blur-sm p-8 rounded-xl space-y-4 hover:bg-background/20 transition-all">
-                    <div class="h-12 w-12 rounded-xl bg-background/20 flex items-center justify-center">
-                        <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            stroke-width="2">
+                <div class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
+                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2" class="text-primary">
                             <path d="M3 5h18"></path>
                             <path d="M3 12h18"></path>
                             <path d="M3 19h18"></path>
                         </svg>
                     </div>
-
-                    <h3 class="text-2xl font-bold">הבנה בשפה טבעית</h3>
-
-                    <p class="opacity-80 leading-relaxed">
-                        אין לוחות בקרה מסובכים, אין גרפים שאי־אפשר להבין.
-                        אתם פשוט שואלים שאלה —
-                        <span class="opacity-100 font-semibold">ו-QORE עונה בעברית ברורה</span>
-                        עם מידע מדויק מהשטח:
-                        הכנסות, עומסים, לקוחות, דפוסים, וגם המלצות לפעולה.
+                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">סדר בזמן אמת</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        העסק כולו מרוכז במקום אחד.
+                        מי הגיע, מי מבטל, כמה זמן נשאר, מה קורה עכשיו –
+                        הכל מוצג בצורה ברורה וללא מאמץ.
                     </p>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- INSIGHTS SECTION -->
-    <section id="insights" class="py-32 px-6">
-        <div class="mx-auto max-w-6xl space-y-20">
-
-            <div class="text-center space-y-6">
-                <h2 class="text-4xl md:text-5xl font-bold">
-                    תשובות אמיתיות.
-                    <span class="text-foreground/70">בזמן אמת.</span>
-                </h2>
-
-                <p class="text-xl text-foreground/70 max-w-3xl mx-auto">
-                    QORE מנתח את כל מה שקורה בעסק ומחזיר לכם תמונה אחת ברורה —
-                    בלי לאקסל, בלי דוחות, בלי כאב ראש.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-                <!-- TEXT SIDE -->
-                <div class="space-y-10">
-
-                    <div class="space-y-4">
-                        <h3 class="text-3xl font-bold">שאלות שאתם באמת שואלים</h3>
-
-                        <p class="text-foreground/70 leading-relaxed">
-                            במקום לבדוק נתונים בעצמכם, QORE נותן לכם תשובות מידיות על מה שקורה:
-                        </p>
-
-                        <ul class="space-y-4 text-lg text-foreground/80">
-                            <li class="flex items-start gap-3">
-                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2">
-                                        <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </div>
-                                מה צפוי השבוע מבחינת עומסים?
-                            </li>
-
-                            <li class="flex items-start gap-3">
-                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2">
-                                        <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </div>
-                                אילו לקוחות מפסיקים להגיע – ולמה?
-                            </li>
-
-                            <li class="flex items-start gap-3">
-                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2">
-                                        <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </div>
-                                איזה שירותים באמת מרוויחים הכי הרבה?
-                            </li>
-
-                            <li class="flex items-start gap-3">
-                                <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-                                    <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2">
-                                        <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </div>
-                                איך ייראה סוף היום? האם נסיים בזמן?
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="space-y-4">
-                        <h3 class="text-3xl font-bold">בלי לגעת במערכת</h3>
-
-                        <p class="text-foreground/70 leading-relaxed">
-                            אין צורך "להתעסק" במערכת. QORE צופה, לומד, ומעדכן אתכם כשקורה משהו חשוב.
-                            ככה אתם פנויים לעבוד — והוא פנוי לחשוב בשבילכם.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- MOCKUP SIDE -->
-                <div class="overflow-hidden rounded-2xl border-2 border-border shadow-xl bg-background">
-                        <div class="aspect-[4/3] flex items-center justify-center bg-muted/40">
-                            <span class="text-foreground/70 text-xl">
-                                מקום למוקאפ של תשובה עסקית (כמו: “היום צפוי עומס כבד בשעה 17:00”)
-                            </span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <!-- VALUE FOR BUSINESS -->
-    <section id="value" class="py-32 px-6 bg-muted/30">
-        <div class="mx-auto max-w-6xl space-y-20">
-
-            <div class="text-center space-y-6">
-                <h2 class="text-4xl md:text-5xl font-bold">
-                    מה זה נותן לבעל העסק?
-                </h2>
-
-                <p class="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-                    QORE לא חוסך לכם זמן בלבד —
-                    הוא מחזק את העסק כולו: הכנסות, שימור לקוחות, ויציבות יום־יומית.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-
-                <!-- CARD 1 -->
-                <div class="bg-background border border-border rounded-xl p-8 shadow-sm space-y-4">
-                    <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            stroke-width="2">
-                            <path d="M4 4h16v16H4z"></path>
-                            <path d="M4 9h16"></path>
-                            <path d="M9 15h1"></path>
-                            <path d="M14 15h1"></path>
-                        </svg>
-                    </div>
-
-                    <h3 class="text-xl font-bold">שליטה ברורה על העסק</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        סוף סוף יש לכם תשובה לשאלה:
-                        *"מה באמת קורה בעסק שלי?"*
-                        בלי מערכות, בלי דוחות, פשוט — הבנה אמיתית בזמן אמת.
-                    </p>
-                </div>
-
-                <!-- CARD 2 -->
-                <div class="bg-background border border-border rounded-xl p-8 shadow-sm space-y-4">
-                    <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            stroke-width="2">
-                            <path d="M12 20v-8"></path>
-                            <path d="M6 20V10"></path>
-                            <path d="M18 20v-4"></path>
-                            <path d="M3 3h18v4H3z"></path>
-                        </svg>
-                    </div>
-
-                    <h3 class="text-xl font-bold">הכנסות יציבות יותר</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        מערכות חכמות של חיזוי, זיהוי לקוחות נעלמים, וניהול עומסים —
-                        שומרות על יום עבודה מלא ועל הכנסות שלא נעלמות בגלל בלאגן.
-                    </p>
-                </div>
-
-                <!-- CARD 3 -->
-                <div class="bg-background border border-border rounded-xl p-8 shadow-sm space-y-4">
-                    <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            stroke-width="2">
+                <div class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
+                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2" class="text-primary">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 6v6l3 3"></path>
                         </svg>
                     </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">ביטולים שמסתדרים לבד</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        לקוח מבטל?
+                        Ozerli משחרר את הזמן שהתפנה, מציע אותו ללקוחות רלוונטיים
+                        וממלא לכם את היום בלי להתעסק בזה.
+                    </p>
+                </div>
 
-                    <h3 class="text-xl font-bold">יותר זמן לעבודה אמיתית</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        QORE מוריד מכם עומסים: התעסקויות, שאלות, תזכורות, בירורים —
-                        כך שאתם פנויים לתת שירות, לא לנהל מערכות.
+                <div class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
+                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2" class="text-primary">
+                            <path d="M4 4h16v16H4z"></path>
+                            <path d="M4 9h16"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">עוזר שעונה לכל שאלה</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        פשוט שואלים:
+                        כמה הכנסות היום, מי הלקוחות שנעלמים, מתי העומס הבא,
+                        איזה שירות הכי רווחי.
+                        Ozerli עונה בעברית טבעית ונותן תמונה מלאה.
                     </p>
                 </div>
 
             </div>
+
         </div>
     </section>
-    <!-- CUSTOMER VALUE SECTION -->
-    <section id="customers" class="py-32 px-6">
-        <div class="mx-auto max-w-6xl space-y-20">
 
-            <div class="text-center space-y-6">
-                <h2 class="text-4xl md:text-5xl font-bold">
-                    ומה עם הלקוחות שלכם?
+    <!-- INSIGHTS SECTION -->
+    <!-- Enhanced with better layout and visual hierarchy -->
+    <section id="insights" class="py-20 sm:py-32 px-4 sm:px-6">
+        <div class="mx-auto max-w-7xl space-y-16 sm:space-y-24">
+
+            <div class="text-center space-y-6 sm:space-y-8">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 leading-tight">
+                    סוף סוף אפשר לקבל תשובות לשאלות שבאמת משנות
                 </h2>
 
-                <p class="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-                    כשלקוחות מבינים מה קורה, כמה זמן נשאר, ומה הסטטוס שלהם —
-                    הם מרגישים בטוחים יותר, מרוצים יותר, וחוזרים יותר.
+                <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto px-4 leading-relaxed">
+                    לא ניתוחים מורכבים, לא דוחות, לא נוסחאות.
+                    פשוט שואלים – Ozerli מחזיר תשובה ברורה מהנתונים האמיתיים של העסק.
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-                <!-- TEXT -->
-                <div class="space-y-10">
+                <div class="space-y-10 sm:space-y-12 order-2 lg:order-1">
 
-                    <div class="space-y-4">
-                        <h3 class="text-3xl font-bold">חוויה שמרגישה מקצועית</h3>
+                    <div class="space-y-6">
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">שאלות שהמערכות האחרות לא יכולות לענות עליהן</h3>
 
-                        <p class="text-foreground/70 leading-relaxed">
-                            QORE נותן ללקוחות מידע בזמן אמת בלי שהם צריכים לשאול:
-                            מתי הם נכנסים, כמה אנשים לפניהם, האם קיים עיכוב, ומה הצפי לסיום.
-                            הם מרגישים שיש סדר ושליטה — ואתם מרוויחים שקט.
+                        <p class="text-foreground/60 leading-relaxed text-lg sm:text-xl">
+                            כי הן לא באמת מבינות את העסק.
+                            Ozerli כן.
+                        </p>
+
+                        <!-- Enhanced checklist with better icons and spacing -->
+                        <ul class="space-y-5 text-base sm:text-lg text-foreground/80">
+
+                            <li class="flex items-start gap-4 group">
+                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                    <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" class="text-primary">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                <span class="leading-relaxed">מי הלקוחות שמפסיקים להגיע – ולמה?</span>
+                            </li>
+
+                            <li class="flex items-start gap-4 group">
+                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                    <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" class="text-primary">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                <span class="leading-relaxed">כמה הכנסות הלכו לאיבוד החודש בגלל ביטולים?</span>
+                            </li>
+
+                            <li class="flex items-start gap-4 group">
+                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                    <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" class="text-primary">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                <span class="leading-relaxed">איזה שירות באמת הכי רווחי – לא מה שנדמה לכם?</span>
+                            </li>
+
+                            <li class="flex items-start gap-4 group">
+                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                    <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" class="text-primary">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                <span class="leading-relaxed">האם אסיים היום בזמן או שכבר עכשיו יש עיכוב?</span>
+                            </li>
+
+                            <li class="flex items-start gap-4 group">
+                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                    <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" class="text-primary">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                    </svg>
+                                </div>
+                                <span class="leading-relaxed">מי הלקוחות שהכי משתלם לי להשאיר מרוצים?</span>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5 bg-primary/5 p-6 sm:p-8 rounded-2xl border border-primary/20">
+                        <h3 class="text-2xl sm:text-3xl font-bold">וזה קורה בלי שתעשו כלום</h3>
+
+                        <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                            אתם לא מזינים נתונים, לא ממלאים טבלאות ולא קוראים דוחות.
+                            Ozerli לומד הכל מהפעילות היומיומית שלכם ומחזיר תשובות בזמן אמת.
                         </p>
                     </div>
 
-                    <div class="space-y-4">
-                        <h3 class="text-3xl font-bold">וכשלקוח מרוצה? הוא חוזר.</h3>
-
-                        <p class="text-foreground/70 leading-relaxed">
-                            החוויה החלקה הזאת מייצרת נאמנות אמיתית.
-                            לקוחות שמרגישים שמכבדים את הזמן שלהם —
-                            חוזרים יותר, ממליצים יותר, ומגדילים את ההכנסות.
-                        </p>
-                    </div>
-
-                    <ul class="space-y-4 text-lg text-foreground/80">
-                        <li class="flex items-start gap-3">
-                            <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-                                <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                </svg>
-                            </div>
-                            זמני המתנה ברורים ושקופים
-                        </li>
-
-                        <li class="flex items-start gap-3">
-                            <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-                                <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                </svg>
-                            </div>
-                            פחות שאלות ופחות עצבים מלקוחות
-                        </li>
-
-                        <li class="flex items-start gap-3">
-                            <div class="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-                                <svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                </svg>
-                            </div>
-                            לקוחות מבינים שהעסק שלכם מתנהל ברמה גבוהה
-                        </li>
-                    </ul>
                 </div>
 
-                <!-- CUSTOMER MOCKUP -->
-                <div class="overflow-hidden rounded-2xl border-2 border-border shadow-xl bg-background">
-                    <div class="aspect-[16/10] flex items-center justify-center bg-muted/40">
-                        <span class="text-foreground/70 text-xl">
-                            מקום למוקאפ של חוויית לקוח (תור, זמן משוער וכו')
+                <!-- Enhanced mockup container with premium shadow -->
+                <div class="overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background order-1 lg:order-2">
+                    <div class="aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-muted/60 to-muted/30">
+                        <span class="text-foreground/50 text-lg sm:text-xl text-center px-6">
+                            מקום למוקאפ של תשובה עסקית חכמה
                         </span>
                     </div>
                 </div>
@@ -490,72 +417,72 @@
         </div>
     </section>
 
+    <!-- VALUE SECTION -->
+    <!-- Enhanced with gradient background and better card design -->
+    <section id="value" class="py-20 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-muted/30 to-muted/50">
+        <div class="mx-auto max-w-7xl space-y-16 sm:space-y-24">
 
-
-
-    <!-- FAQ SECTION -->
-    <section id="faq" class="py-32 px-6 bg-muted/30">
-        <div class="mx-auto max-w-5xl space-y-16">
-
-            <div class="text-center space-y-6">
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
-                    שאלות נפוצות
+            <div class="text-center space-y-6 sm:space-y-8">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 leading-tight">
+                    מה Ozerli נותן לכם כבעלי עסק
                 </h2>
-                <p class="text-lg text-foreground/70 max-w-3xl mx-auto">
-                    איך זה עובד? מה הוא לומד? איך הוא יודע? הנה הכל.
+
+                <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed px-4">
+                    ניהול קל יותר, יום עבודה יציב יותר, החלטות חכמות יותר.
+                    לא עוד ניחושים או בלאגן – סוף סוף יש עוזר שמחזיק אתכם עם היד על הדופק.
                 </p>
             </div>
 
-            <div class="space-y-6">
+            <!-- Enhanced value proposition cards -->
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
 
-                <!-- FAQ ITEM -->
-                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
-                    <h3 class="text-xl font-bold">איך QORE לומד את העסק?</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        הוא אוסף נתונים טבעיים מתוך העבודה היומיומית שלכם:
-                        זמני שירות, הגעה של לקוחות, עומסים, ביטולים, סוגי שירותים ועוד.
-                        המידע הזה מצטבר ומאפשר לו לזהות דפוסים, לחזות בעיות,
-                        ולהבין את המבנה האמיתי של העסק שלכם.
+                <div class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
+                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2" class="text-primary">
+                            <path d="M4 4h16v16H4z"></path>
+                            <path d="M4 9h16"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">שליטה מלאה במה שקורה</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        לא צריך לנחש מה קורה היום.
+                        אתם יודעים בדיוק כמה לקוחות מגיעים, כמה הכנסות צפויות,
+                        מי מבטל, איפה יש עיכוב ומתי ניתן לסיים את היום.
                     </p>
                 </div>
 
-                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
-                    <h3 class="text-xl font-bold">איך הוא נותן תובנות מדויקות?</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        QORE לא מסתמך על נתונים שצריך להזין ידנית.
-                        הכל נאסף אוטומטית מתוך מה שקורה בפועל —
-                        ולכן התובנות שלו מדויקות ומתעדכנות כל רגע.
+                <div class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
+                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2" class="text-primary">
+                            <path d="M12 20v-8"></path>
+                            <path d="M6 20V10"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">יציבות והכנסות צפויות יותר</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        פחות ביטולים שלא טופלו, פחות חורים בלו"ז,
+                        יותר תורים מלאים ולקוחות שמחליפים זה את זה.
+                        Ozerli ממלא לכם זמן עבודה שמתאדה במערכות אחרות.
                     </p>
                 </div>
 
-                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
-                    <h3 class="text-xl font-bold">איך זה עובד בשיחה טבעית?</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        אתם פשוט שואלים אותו שאלות בעברית.
-                        כמו:
-                        "מה מצב היום?"
-                        "כמה הכנסות עשיתי השבוע?"
-                        "מי הלקוחות שלא הגיעו בזמן האחרון?"
-                        והוא עונה בצורה ברורה ופשוטה — בלי דשבורדים קשהים ובלי פירוק נתונים.
-                    </p>
-                </div>
+                <div class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
+                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2" class="text-primary">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l3 3"></path>
+                        </svg>
+                    </div>
 
-                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
-                    <h3 class="text-xl font-bold">האם המערכת תומכת בניהול תורים?</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        כן — אבל זה רק חלק קטן ממנה.
-                        התורים הם מקור מידע שמאפשר למערכת להבין את העסק,
-                        לא המטרה המרכזית.
-                        QORE היא קודם כל בינה עסקית, לא מערכת תורים.
-                    </p>
-                </div>
-
-                <div class="p-6 md:p-8 bg-background border border-border rounded-xl space-y-3">
-                    <h3 class="text-xl font-bold">איך זה עוזר לי להגדיל הכנסות?</h3>
-                    <p class="text-foreground/70 leading-relaxed">
-                        זיהוי מוקדם של לקוחות שנעלמים, חיזוי עומסים, המלצות על שעות חזקות,
-                        ניתוח שירותים רווחיים וייעול העבודה —
-                        כל אלה מובילים לשיפור ישיר ומתמשך בהכנסות.
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">זמן פנוי לעבודה אמיתית</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        פחות התעסקות עם לקוחות, בירורים, מסודרים, תורים ושאלות.
+                        אתם עובדים בשקט, והוא דואג לכל מה שמסביב.
                     </p>
                 </div>
 
@@ -564,60 +491,227 @@
         </div>
     </section>
 
+    <!-- CUSTOMERS SECTION -->
+    <!-- Enhanced customer section with better visual hierarchy -->
+    <section id="customers" class="py-20 sm:py-32 px-4 sm:px-6">
+        <div class="mx-auto max-w-7xl space-y-16 sm:space-y-24">
 
+            <div class="text-center space-y-6 sm:space-y-8">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-4 leading-tight">
+                    כשהלקוחות רגועים – העסק עובד טוב יותר
+                </h2>
 
+                <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed px-4">
+                    הלקוחות שלכם לא צריכים לנחש מה קורה.
+                    הם יודעים בדיוק מתי ייכנסו, כמה זמן נשאר, ואם יש עיכוב.
+                    החוויה הזאת הופכת אותם ללקוחות שמגיעים בזמן, מבינים את התהליך וממליצים עליכם.
+                </p>
+            </div>
 
-    <!-- CTA SECTION -->
-    <section class="py-32 px-6 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-foreground via-foreground to-foreground/90"></div>
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                <div class="space-y-10 sm:space-y-12">
+
+                    <div class="space-y-5 bg-gradient-to-br from-primary/5 to-transparent p-6 sm:p-8 rounded-2xl border border-primary/20">
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">חוויה שמרגישה מקצועית ובטוחה</h3>
+
+                        <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                            Ozerli נותן ללקוחות מידע אמיתי בזמן אמת:
+                            כמה לפניהם, מה קורה עכשיו, והאם יש עיכוב.
+                            הם מרגישים ששומרים על הזמן שלהם – וזה שווה זהב.
+                        </p>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">לקוחות שמבינים יותר – שואלים פחות</h3>
+
+                        <p class="text-foreground/60 leading-relaxed text-base sm:text-lg">
+                            פחות טלפונים, פחות הודעות, פחות "מה קורה עם התור?"
+                            אתם מתפנים לעבודה, והם מקבלים חוויה ברורה ושקטה.
+                        </p>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">וכשהם מרוצים – הם חוזרים</h3>
+
+                        <p class="text-foreground/60 leading-relaxed text-base sm:text-lg">
+                            הלקוחות מרגישים שאתם עובדים מסודר, מקצועי, וששום דבר לא נופל בין הכיסאות.
+                            זה מייצר נאמנות אמיתית והכנסה יציבה לאורך זמן.
+                        </p>
+                    </div>
+
+                    <!-- Enhanced benefit list -->
+                    <ul class="space-y-5 text-base sm:text-lg text-foreground/80 pt-4">
+
+                        <li class="flex items-start gap-4 group">
+                            <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" class="text-primary">
+                                    <path d="M20 6L9 17l-5-5"></path>
+                                </svg>
+                            </div>
+                            <span class="leading-relaxed">חוויית שירות ברורה ומקצועית</span>
+                        </li>
+
+                        <li class="flex items-start gap-4 group">
+                            <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" class="text-primary">
+                                    <path d="M20 6L9 17l-5-5"></path>
+                                </svg>
+                            </div>
+                            <span class="leading-relaxed">פחות שאלות ופחות עצבים</span>
+                        </li>
+
+                        <li class="flex items-start gap-4 group">
+                            <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" class="text-primary">
+                                    <path d="M20 6L9 17l-5-5"></path>
+                                </svg>
+                            </div>
+                            <span class="leading-relaxed">נאמנות גבוהה יותר ולקוחות שחוזרים</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Enhanced mockup with better shadow -->
+                <div class="overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background">
+                    <div class="aspect-[16/10] flex items-center justify-center bg-gradient-to-br from-muted/60 to-muted/30">
+                        <span class="text-foreground/50 text-lg sm:text-xl text-center px-6">
+                            מקום למוקאפ של חוויית לקוח (עדכון תור ותנועת תור בזמן אמת)
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <!-- Enhanced FAQ with better spacing and hover effects -->
+    <section id="faq" class="py-20 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-muted/20 to-muted/40">
+        <div class="mx-auto max-w-4xl space-y-12 sm:space-y-20">
+
+            <div class="text-center space-y-6">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight px-4">
+                    שאלות נפוצות
+                </h2>
+                <p class="text-lg sm:text-xl text-foreground/70 max-w-3xl mx-auto px-4">
+                    כל מה שבעלי עסקים שואלים לפני שהם מתחילים.
+                </p>
+            </div>
+
+            <!-- Enhanced FAQ items with hover effects -->
+            <div class="space-y-6">
+
+                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">האם צריך להזין נתונים או לעבוד עם דוחות?</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        בכלל לא.
+                        Ozerli לומד לבד מכל פעולה שקורית בעסק – קביעות, ביטולים, זמני שירות, תשלומים והגעה.
+                        אתם רק עובדים כרגיל, והוא מציג לכם את התמונה המלאה.
+                    </p>
+                </div>
+
+                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">איך Ozerli יודע לענות על שאלות מורכבות?</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        כל תנועה בעסק הופכת למידע: תורים, לקוחות, זמני טיפול, הכנסות ועוד.
+                        המערכת מחברת הכל ומחזירה תשובה ברורה – בשפה טבעית ומדויקת.
+                    </p>
+                </div>
+
+                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">האם זה תחליף למערכת תורים?</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        המטרה של Ozerli היא הרבה מעבר לניהול תורים.
+                        הוא מסדר לכם את היום, מתמודד עם ביטולים, מציע תורים שהתפנו,
+                        ומציג תובנות עסקיות שאף מערכת תורים לא יכולה לתת.
+                    </p>
+                </div>
+
+                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">הלקוחות שלי צריכים להתקין משהו?</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        לא. הלקוחות מקבלים מידע בזמן אמת על התור שלהם דרך WhatsApp/סמס,
+                        בלי אפליקציה ובלי הרשמה.
+                    </p>
+                </div>
+
+                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">מה צריך כדי להתחיל?</h3>
+                    <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
+                        רק לפתוח חשבון ולהתחיל לעבוד כרגיל.
+                        כל השאר – Ozerli מטפל בו.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <!-- Enhanced final CTA with premium dark gradient and better form -->
+    <section class="py-20 sm:py-32 px-4 sm:px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/95 to-primary/20"></div>
         <div
             class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:64px_64px]">
         </div>
 
-        <div class="relative mx-auto max-w-4xl text-center space-y-10">
+        <div class="relative mx-auto max-w-5xl text-center space-y-10 sm:space-y-12">
 
-            <h2 class="text-4xl md:text-5xl font-bold text-background leading-tight">
-                הגיע הזמן לעבוד עם עוזר שמבין את העסק יותר טוב מכולם.
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-background leading-tight px-4">
+                הגיע הזמן לעבוד עם עוזר שמנהל את העסק בשבילכם.
             </h2>
 
-            <p class="text-xl text-background/70 max-w-2xl mx-auto leading-relaxed">
-                הצטרפו לגישה המוקדמת וקבלו את המערכת שתלווה אתכם, תענה לכם,
-                ותאיר את מה שלא הייתם רואים לבד.
+            <p class="text-lg sm:text-xl md:text-2xl text-background/80 max-w-3xl mx-auto leading-relaxed px-4">
+                הצטרפו לגישה המוקדמת וגלו איך נראה יום עבודה עם סדר, שליטה ותשובות ברגע.
+                Ozerli מתחיל ללמוד את העסק מהיום הראשון – ואתם מרגישים את ההבדל מיד.
             </p>
 
-            <div class="pt-6">
-                <div class="inline-flex max-w-lg w-full p-2 bg-background rounded-2xl shadow-2xl">
-                    <div class="flex flex-col sm:flex-row gap-2 w-full">
+            <!-- Enhanced email signup form -->
+            <div class="pt-6 sm:pt-8">
+                <div class="inline-flex max-w-2xl w-full p-2 sm:p-2.5 bg-background/95 backdrop-blur rounded-2xl shadow-2xl">
+                    <div class="flex flex-col sm:flex-row gap-2.5 w-full">
                         <input type="email" placeholder="כתבו את המייל שלכם"
-                            class="flex-1 px-4 py-3 rounded-lg bg-muted focus:outline-none focus:ring-2 focus:ring-primary text-right text-foreground" />
+                            class="flex-1 px-5 py-4 rounded-xl bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary text-right text-foreground placeholder:text-foreground/40 font-medium transition-all" />
                         <button
-                            class="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition">
+                            class="px-8 sm:px-10 py-4 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/30 whitespace-nowrap">
                             הצטרפו עכשיו
                         </button>
                     </div>
                 </div>
+
             </div>
+
+            <p class="text-background/70 text-sm sm:text-base pt-4 px-4">
+                ללא התחייבות. ללא עלות בתהליך הראשוני. רק להתחיל ולראות איך זה מרגיש לעבוד מסודר.
+            </p>
 
         </div>
     </section>
 
 
 
-
     <!-- FOOTER -->
-    <footer class="border-t border-border py-12 px-6">
-        <div class="mx-auto max-w-6xl">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+    <!-- Enhanced footer with better spacing and hover effects -->
+    <footer class="border-t border-border/50 py-10 sm:py-14 px-4 sm:px-6 bg-muted/20">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
 
-                <div class="flex items-center gap-3">
-                    <span class="text-xl font-bold">QORE</span>
-                    <span class="text-sm text-foreground/70">© 2025 כל הזכויות שמורות</span>
+                <div class="flex items-center gap-4">
+                    <span class="text-xl sm:text-2xl font-bold bg-gradient-to-l from-primary to-foreground bg-clip-text text-transparent">Ozerli</span>
+                    <span class="text-sm text-foreground/60">© 2025 כל הזכויות שמורות</span>
                 </div>
 
-                <div class="flex items-center gap-6 text-sm text-foreground/70">
-                    <a href="#" class="hover:text-foreground transition">תנאי שימוש</a>
-                    <a href="#" class="hover:text-foreground transition">מדיניות פרטיות</a>
-                    <a href="#" class="hover:text-foreground transition">צור קשר</a>
+                <div class="flex items-center gap-6 sm:gap-8 text-sm sm:text-base text-foreground/60">
+                    <a href="#" class="hover:text-primary transition-colors duration-200">תנאי שימוש</a>
+                    <a href="#" class="hover:text-primary transition-colors duration-200">מדיניות פרטיות</a>
+                    <a href="#" class="hover:text-primary transition-colors duration-200">צור קשר</a>
                 </div>
 
             </div>
