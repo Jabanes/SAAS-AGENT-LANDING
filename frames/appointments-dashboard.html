@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QORE Appointments Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: "hsl(0 0% 100%)",
+                        foreground: "hsl(222.2 84% 4.9%)",
+                        muted: "hsl(210 40% 96.1%)",
+                        border: "hsl(214.3 31.8% 91.4%)",
+                        primary: "hsl(221.2 83.2% 53.3%)",
+                        "primary-foreground": "hsl(210 40% 98%)"
+                    },
+                    fontFamily: {
+                        display: ["Manrope", "Noto Sans Hebrew", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Manrope', 'Noto Sans Hebrew', system-ui, -apple-system, sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: hsl(214.3 31.8% 91.4%);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(221.2 83.2% 53.3% / 0.3);
+        }
+    </style>
+</head>
+
+<body class="font-display bg-muted text-foreground">
+    <div class="relative flex h-screen w-full flex-col overflow-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            
+            <!-- Header -->
+            <header class="flex items-center justify-between px-6 lg:px-10 py-4 bg-background border-b border-border shadow-sm sticky top-0 z-10">
+                <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm">
+                        <span class="material-symbols-outlined text-primary">calendar_month</span>
+                    </div>
+                    <h2 class="text-xl font-bold">פגישות</h2>
+                </div>
+                
+                <div class="flex flex-1 justify-end gap-3">
+                    <label class="flex flex-col min-w-40 h-11 w-full max-w-sm">
+                        <div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-border/60 hover:border-primary/30 transition-colors">
+                            <div class="text-foreground/40 flex items-center justify-center pl-3 pr-2 bg-background rounded-r-xl">
+                                <span class="material-symbols-outlined">search</span>
+                            </div>
+                            <input 
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-foreground focus:outline-0 focus:ring-2 focus:ring-primary/30 border-none bg-background h-full placeholder:text-foreground/40 px-2 rounded-r-none pl-2 text-base font-normal" 
+                                placeholder="חיפוש..." 
+                                value=""
+                            />
+                        </div>
+                    </label>
+                    
+                    <button class="flex items-center justify-center rounded-xl h-11 bg-background border border-border/60 hover:border-primary/30 hover:bg-muted/50 text-foreground gap-2 text-sm font-semibold px-4 transition-all shadow-sm">
+                        <span class="material-symbols-outlined">filter_list</span>
+                    </button>
+                </div>
+            </header>
+
+            <main class="flex-1 flex overflow-hidden">
+                
+                <!-- Left Column -->
+                <div class="w-full max-w-sm lg:max-w-md xl:max-w-lg border-l border-border flex flex-col overflow-y-auto bg-background">
+                    <div class="p-6 space-y-8">
+                        
+                        <!-- Status Filters -->
+                        <div class="flex">
+                            <div class="flex h-11 flex-1 items-center justify-center rounded-xl bg-muted/60 p-1.5 border border-border/40 shadow-sm">
+                                <label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-3 has-[:checked]:bg-background has-[:checked]:shadow-md has-[:checked]:text-foreground text-foreground/50 text-sm font-semibold transition-all">
+                                    <span>הכל</span>
+                                    <input class="invisible w-0" name="status-filter" type="radio" value="הכל" />
+                                </label>
+                                <label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-3 has-[:checked]:bg-background has-[:checked]:shadow-md has-[:checked]:text-foreground text-foreground/50 text-sm font-semibold transition-all">
+                                    <span>נקבעו</span>
+                                    <input checked="" class="invisible w-0" name="status-filter" type="radio" value="נקבעו" />
+                                </label>
+                                <label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-3 has-[:checked]:bg-background has-[:checked]:shadow-md has-[:checked]:text-foreground text-foreground/50 text-sm font-semibold transition-all">
+                                    <span>הושלמו</span>
+                                    <input class="invisible w-0" name="status-filter" type="radio" value="הושלמו" />
+                                </label>
+                                <label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-3 has-[:checked]:bg-background has-[:checked]:shadow-md has-[:checked]:text-foreground text-foreground/50 text-sm font-semibold transition-all">
+                                    <span>בוטלו</span>
+                                    <input class="invisible w-0" name="status-filter" type="radio" value="בוטלו" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Date Picker -->
+                        <div class="flex min-w-72 flex-1 flex-col gap-1 bg-background p-4 rounded-2xl border border-border/60 shadow-md">
+                            <div class="flex items-center p-1 justify-between mb-2">
+                                <button class="text-foreground flex size-10 items-center justify-center rounded-xl hover:bg-muted transition-colors">
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </button>
+                                <p class="text-foreground text-base font-bold flex-1 text-center">יולי 2024</p>
+                                <button class="text-foreground flex size-10 items-center justify-center rounded-xl hover:bg-muted transition-colors">
+                                    <span class="material-symbols-outlined">chevron_left</span>
+                                </button>
+                            </div>
+                            
+                            <div class="grid grid-cols-7 gap-1">
+                                <p class="text-foreground/40 text-xs font-bold flex h-10 w-full items-center justify-center">א</p>
+                                <p class="text-foreground/40 text-xs font-bold flex h-10 w-full items-center justify-center">ב</p>
+                                <p class="text-foreground/40 text-xs font-bold flex h-10 w-full items-center justify-center">ג</p>
+                                <p class="text-foreground/40 text-xs font-bold flex h-10 w-full items-center justify-center">ד</p>
+                                <p class="text-foreground/40 text-xs font-bold flex h-10 w-full items-center justify-center">ה</p>
+                                <p class="text-foreground/40 text-xs font-bold flex h-10 w-full items-center justify-center">ו</p>
+                                <p class="text-foreground/40 text-xs font-bold flex h-10 w-full items-center justify-center">ש</p>
+                                
+                                <button class="h-10 w-full text-foreground/30 text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg">30</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium col-start-2">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">1</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">2</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">3</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">4</div>
+                                </button>
+                                <button class="h-10 w-full text-primary-foreground text-sm font-semibold">
+                                    <div class="flex size-full items-center justify-center rounded-lg bg-primary shadow-lg shadow-primary/25 relative">
+                                        <span class="absolute bottom-1.5 h-1 w-1 rounded-full bg-primary-foreground/80"></span>5
+                                    </div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">6</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">7</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">8</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors relative">
+                                        <span class="absolute bottom-1.5 h-1 w-1 rounded-full bg-primary/50"></span>9
+                                    </div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">10</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">11</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">12</div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors relative">
+                                        <span class="absolute bottom-1.5 h-1 w-1 rounded-full bg-primary/50"></span>13
+                                    </div>
+                                </button>
+                                <button class="h-10 w-full text-foreground text-sm font-medium">
+                                    <div class="flex size-full items-center justify-center rounded-lg hover:bg-muted transition-colors">14</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Blocked Times -->
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-foreground text-lg font-bold">זמנים חסומים</h3>
+                                <button class="flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                                    <span class="material-symbols-outlined text-lg">add_circle</span>
+                                    הוסף חסימה
+                                </button>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-4 bg-muted/60 rounded-xl p-4 border border-border/40 justify-between hover:border-border transition-colors shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="text-foreground flex items-center justify-center rounded-lg bg-background border border-border/60 shrink-0 size-10 shadow-sm">
+                                            <span class="material-symbols-outlined" style="font-size: 18px;">block</span>
+                                        </div>
+                                        <p class="text-foreground text-sm font-medium flex-1">09:00 - 10:30</p>
+                                    </div>
+                                    <button class="shrink-0 text-foreground/40 hover:text-red-500 transition-colors">
+                                        <div class="flex size-9 items-center justify-center rounded-lg hover:bg-red-50 transition-colors">
+                                            <span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appointments List -->
+                        <div class="space-y-4 flex-1 min-h-0">
+                            <h3 class="text-foreground text-lg font-bold">פגישות ל-5 ביולי</h3>
+                            
+                            <div class="space-y-3">
+                                <!-- Selected Appointment Card -->
+                                <div class="cursor-pointer bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-5 border-2 border-primary shadow-lg hover:shadow-xl transition-all">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <p class="font-bold text-lg text-foreground">ישראל ישראלי</p>
+                                            <p class="text-sm text-foreground/60 mt-1">פגישת ייעוץ ראשונית</p>
+                                        </div>
+                                        <p class="font-bold text-sm text-foreground px-3 py-1.5 bg-background/60 rounded-lg">11:00</p>
+                                    </div>
+                                    <div>
+                                        <span class="inline-flex items-center rounded-full bg-blue-500/15 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-500/20">נקבעה</span>
+                                    </div>
+                                </div>
+
+                                <!-- Other Appointment Cards -->
+                                <div class="cursor-pointer bg-background rounded-2xl p-5 border border-border/60 hover:border-primary/30 hover:shadow-md transition-all">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <p class="font-bold text-lg text-foreground">דנה כהן</p>
+                                            <p class="text-sm text-foreground/60 mt-1">טיפול פנים קלאסי</p>
+                                        </div>
+                                        <p class="font-bold text-sm text-foreground px-3 py-1.5 bg-muted rounded-lg">12:30</p>
+                                    </div>
+                                    <div>
+                                        <span class="inline-flex items-center rounded-full bg-green-500/15 px-3 py-1 text-xs font-semibold text-green-700 border border-green-500/20">הושלמה</span>
+                                    </div>
+                                </div>
+
+                                <div class="cursor-pointer bg-background rounded-2xl p-5 border border-border/60 hover:border-primary/30 hover:shadow-md transition-all">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <p class="font-bold text-lg text-foreground">אבי לוי</p>
+                                            <p class="text-sm text-foreground/60 mt-1">ייעוץ פיננסי</p>
+                                        </div>
+                                        <p class="font-bold text-sm text-foreground px-3 py-1.5 bg-muted rounded-lg">14:00</p>
+                                    </div>
+                                    <div>
+                                        <span class="inline-flex items-center rounded-full bg-foreground/10 px-3 py-1 text-xs font-semibold text-foreground/70 border border-foreground/10">בוטלה</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="flex-1 overflow-y-auto bg-muted/40">
+                    <div class="p-6 lg:p-10">
+                        <div class="bg-background rounded-2xl border border-border/60 shadow-lg p-8 lg:p-10 space-y-10 max-w-5xl mx-auto">
+                            
+                            <!-- Customer Info -->
+                            <div class="space-y-5">
+                                <h3 class="text-xl font-bold text-foreground">פרטי לקוח</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">שם מלא</label>
+                                        <input 
+                                            class="block w-full rounded-xl border border-border/60 bg-muted/40 p-3.5 text-foreground text-base focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" 
+                                            type="text" 
+                                            value="ישראל ישראלי"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">טלפון</label>
+                                        <input 
+                                            class="block w-full rounded-xl border border-border/60 bg-muted/40 p-3.5 text-foreground text-base focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" 
+                                            type="text" 
+                                            value="054-1234567"
+                                        />
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">אימייל</label>
+                                        <input 
+                                            class="block w-full rounded-xl border border-border/60 bg-muted/40 p-3.5 text-foreground text-base focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" 
+                                            type="email" 
+                                            value="israel@example.com"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="border-t border-border/60" />
+
+                            <!-- Service Details -->
+                            <div class="space-y-5">
+                                <h3 class="text-xl font-bold text-foreground">פרטי השירות</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">שם השירות</label>
+                                        <input 
+                                            class="block w-full rounded-xl border border-border/60 bg-muted/40 p-3.5 text-foreground text-base focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" 
+                                            type="text" 
+                                            value="פגישת ייעוץ ראשונית"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">משך (דקות)</label>
+                                        <input 
+                                            class="block w-full rounded-xl border border-border/60 bg-muted/40 p-3.5 text-foreground text-base focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" 
+                                            type="number" 
+                                            value="60"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">מחיר (₪)</label>
+                                        <input 
+                                            class="block w-full rounded-xl border border-border/60 bg-muted/40 p-3.5 text-foreground text-base focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" 
+                                            type="number" 
+                                            value="350"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="border-t border-border/60" />
+
+                            <!-- Appointment Meta -->
+                            <div class="space-y-5">
+                                <h3 class="text-xl font-bold text-foreground">מידע נוסף</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">סטטוס</label>
+                                        <div class="mt-2">
+                                            <span class="inline-flex items-center rounded-full bg-blue-500/15 px-4 py-2 text-sm font-semibold text-blue-700 border border-blue-500/20">נקבעה</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">תאריך</label>
+                                        <p class="mt-2 text-base font-semibold text-foreground p-3">5 ביולי, 2024</p>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-semibold text-foreground/60 mb-2 block">שעה</label>
+                                        <p class="mt-2 text-base font-semibold text-foreground p-3">11:00</p>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="text-sm font-semibold text-foreground/60 mb-2 block">הערות</label>
+                                    <textarea 
+                                        class="block w-full rounded-xl border border-border/60 bg-muted/40 p-3.5 text-foreground text-base focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all" 
+                                        placeholder="הוסף הערות לפגישה..." 
+                                        rows="4"
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row-reverse gap-3 pt-6 border-t border-border/60">
+                                <button class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground text-sm font-bold rounded-xl shadow-lg shadow-primary/25 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 transition-all">
+                                    שמור שינויים
+                                </button>
+                                
+                                <button class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-muted border border-border/60 text-foreground text-sm font-bold rounded-xl hover:bg-muted/80 hover:border-border transition-all shadow-sm">
+                                    ערוך
+                                </button>
+                                
+                                <button class="w-full sm:w-auto flex sm:mr-auto items-center justify-center gap-2 px-6 py-3 text-red-600 text-sm font-semibold rounded-xl hover:bg-red-50 transition-all">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                                    בטל פגישה
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</body>
+</html>

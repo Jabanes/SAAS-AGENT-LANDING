@@ -59,10 +59,133 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
+
+        /* Added modal styles and JavaScript for interactive overlays */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            height: 85%;
+            max-width: 1400px;
+            max-height: 900px;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: scaleIn 0.3s ease-out;
+            z-index: 10;
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            z-index: 20;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .preview-container {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .preview-container:hover {
+            transform: translateY(-4px);
+        }
+
+        .preview-container:hover .preview-overlay {
+            opacity: 1;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(59, 130, 246, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1.5rem;
+        }
+
+        .preview-hint {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 
-<body class="min-h-screen bg-background text-foreground">
+<body class="min-h-screen bg-background text-foreground overflow-x-hidden" dir="rtl">
     <!-- NAV -->
     <!-- Enhanced navbar with better shadow, spacing, and glass effect -->
     <nav class="fixed top-0 left-0 right-0 z-50 border-b border-border/30 glass-nav shadow-sm">
@@ -195,7 +318,7 @@
             <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed px-4">
                 ביטולים של הרגע האחרון, לקוחות שלא מגיעים, שאלות בלי סוף,
                 עומסים לא צפויים, ונתונים שמפוזרים בין הודעות, מחברות ומערכות שונות -
-                כך נראה היום של רוב בעלי העסקים.
+                כך נראה היום שלרוב בעלי העסקים.
             </p>
 
             <!-- Enhanced card grid with better shadows and hover effects -->
@@ -248,7 +371,7 @@
             <p class="text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-4xl mx-auto leading-relaxed px-4">
                 Ozerli מסדר את כל מה שדורש זמן, מחשבה וניהול.
                 ביטולים, עומסים, שאלות, תזמון, מעקב אחרי לקוחות –
-                הכל נאסף, מובן ומטופל אוטומטית כדי להשאיר אתכם פנויים לעבודה.
+                הכל נאסף, מובן וmanagedType אוטומטית כדי להשאיר אתכם פנויים לעבודה.
             </p>
 
             <!-- Enhanced feature cards with gradients and better icons -->
@@ -258,9 +381,8 @@
                     <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
-                            <path d="M3 5h18"></path>
-                            <path d="M3 12h18"></path>
-                            <path d="M3 19h18"></path>
+                            <path d="M4 4h16v16H4z"></path>
+                            <path d="M4 9h16"></path>
                         </svg>
                     </div>
                     <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">סדר בזמן אמת</h3>
@@ -275,8 +397,8 @@
                     <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l3 3"></path>
+                            <path d="M12 20v-8"></path>
+                            <path d="M6 20V10"></path>
                         </svg>
                     </div>
                     <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">ביטולים שמסתדרים לבד</h3>
@@ -404,12 +526,18 @@
 
                 </div>
 
-                <!-- Enhanced mockup container with premium shadow -->
-                <div class="overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background order-1 lg:order-2">
-                    <div class="aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-muted/60 to-muted/30">
-                        <span class="text-foreground/50 text-lg sm:text-xl text-center px-6">
-                            מקום למוקאפ של תשובה עסקית חכמה
-                        </span>
+                <!-- Replaced static iframe with clickable preview for appointments dashboard -->
+                <div class="preview-container overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background order-1 lg:order-2 relative" onclick="openModal('appointments')">
+                    <div class="aspect-[4/3] flex items-center justify-center bg-muted/5 relative overflow-hidden">
+                        <iframe 
+                            src="/frames/appointments-dashboard.html" 
+                            class="w-full h-full border-0 pointer-events-none"
+                            style="width: 100%; height: 100%; transform: scale(0.70); transform-origin: top center;"
+                            title="Appointments Dashboard Preview"
+                        ></iframe>
+                        <div class="preview-overlay">
+                            <div class="preview-hint">לחצו לצפייה מלאה</div>
+                        </div>
                     </div>
                 </div>
 
@@ -527,7 +655,7 @@
 
                         <p class="text-foreground/60 leading-relaxed text-base sm:text-lg">
                             פחות טלפונים, פחות הודעות, פחות "מה קורה עם התור?"
-                            אתם מתפנים לעבודה, והם מקבלים חוויה ברורה ושקטה.
+                            אתם מת phấnים לעבודה, והם מקבלים חוויה ברורה ושקטה.
                         </p>
                     </div>
 
@@ -577,12 +705,18 @@
 
                 </div>
 
-                <!-- Enhanced mockup with better shadow -->
-                <div class="overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background">
-                    <div class="aspect-[16/10] flex items-center justify-center bg-gradient-to-br from-muted/60 to-muted/30">
-                        <span class="text-foreground/50 text-lg sm:text-xl text-center px-6">
-                            מקום למוקאפ של חוויית לקוח (עדכון תור ותנועת תור בזמן אמת)
-                        </span>
+                <!-- Replaced static iframe with clickable preview for live dashboard -->
+                <div class="preview-container overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background relative" onclick="openModal('live')">
+                    <div class="aspect-[16/10] flex items-center justify-center bg-muted/5 relative overflow-hidden">
+                        <iframe 
+                            src="/frames/live-dashboard.html" 
+                            class="w-full h-full border-0 pointer-events-none"
+                            style="width: 100%; height: 118%; transform: scale(0.70); transform-origin: top center;"
+                            title="Live Dashboard Preview"
+                        ></iframe>
+                        <div class="preview-overlay">
+                            <div class="preview-hint">לחצו לצפייה מלאה</div>
+                        </div>
                     </div>
                 </div>
 
@@ -717,6 +851,81 @@
             </div>
         </div>
     </footer>
+
+    <!-- Added modal overlay system for all three product screens -->
+    <!-- Modal for Appointments Dashboard -->
+    <div id="modal-appointments" class="modal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+            <iframe src="/frames/appointments-dashboard.html" title="Appointments Dashboard"></iframe>
+        </div>
+    </div>
+
+    <!-- Modal for Live Dashboard -->
+    <div id="modal-live" class="modal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+            <iframe src="/frames/live-dashboard.html" title="Live Dashboard"></iframe>
+        </div>
+    </div>
+
+    <!-- Modal for AI Chat Assistant -->
+    <div id="modal-assistant" class="modal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+            <iframe src="/frames/assistant-chat.html" title="AI Chat Assistant"></iframe>
+        </div>
+    </div>
+
+    <!-- Added JavaScript for modal functionality -->
+    <script>
+        let currentModal = null;
+
+        function openModal(type) {
+            const modalId = 'modal-' + type;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                currentModal = modal;
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeModal() {
+            if (currentModal) {
+                currentModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+                currentModal = null;
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && currentModal) {
+                closeModal();
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 
 </body>
 
