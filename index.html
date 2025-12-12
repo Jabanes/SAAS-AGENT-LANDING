@@ -43,6 +43,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -164,8 +165,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes scaleIn {
@@ -173,6 +179,7 @@
                 opacity: 0;
                 transform: scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -193,7 +200,8 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-8 lg:gap-12">
                     <!-- Enhanced logo with gradient effect -->
-                    <div class="text-2xl font-bold bg-gradient-to-l from-primary to-foreground bg-clip-text text-transparent">
+                    <div
+                        class="text-2xl font-bold bg-gradient-to-l from-primary to-foreground bg-clip-text text-transparent">
                         Ozerli
                     </div>
 
@@ -202,7 +210,8 @@
                         <a href="#ai" class="text-foreground/60 hover:text-primary transition-colors duration-200">
                             הבינה העסקית
                         </a>
-                        <a href="#insights" class="text-foreground/60 hover:text-primary transition-colors duration-200">
+                        <a href="#insights"
+                            class="text-foreground/60 hover:text-primary transition-colors duration-200">
                             תובנות בזמן אמת
                         </a>
                         <a href="#value" class="text-foreground/60 hover:text-primary transition-colors duration-200">
@@ -231,7 +240,7 @@
         <div
             class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:64px_64px]">
         </div>
-        
+
         <!-- Added gradient overlay for depth -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50"></div>
 
@@ -250,7 +259,8 @@
                 <!-- Improved typography hierarchy and gradient -->
                 <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight px-4">
                     פחות ניהול. יותר זמן לעבוד.<br />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-l from-primary via-foreground to-foreground/90">
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-l from-primary via-foreground to-foreground/90">
                         Ozerli עושה סדר בכל מה שקורה בעסק.
                     </span>
                 </h1>
@@ -270,18 +280,21 @@
                         class="px-10 h-14 rounded-full bg-primary text-primary-foreground font-semibold shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
                         הצטרפו לגישה המוקדמת
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
 
-                    <button class="px-10 h-14 rounded-full border-2 border-border/60 font-semibold hover:bg-muted hover:border-border transition-all duration-300 hover:scale-105 shadow-sm">
+                    <button
+                        class="px-10 h-14 rounded-full border-2 border-border/60 font-semibold hover:bg-muted hover:border-border transition-all duration-300 hover:scale-105 shadow-sm">
                         ראו איך זה עובד
                     </button>
                 </div>
 
                 <!-- SOCIAL PROOF -->
                 <!-- Improved social proof design with better visual balance -->
-                <div class="flex justify-center gap-6 lg:gap-10 pt-12 sm:pt-16 text-sm sm:text-base text-foreground/70 flex-wrap px-4">
+                <div
+                    class="flex justify-center gap-6 lg:gap-10 pt-12 sm:pt-16 text-sm sm:text-base text-foreground/70 flex-wrap px-4">
                     <span class="flex items-center gap-2.5 hover:text-foreground transition-colors">
                         <div class="h-2.5 w-2.5 bg-primary rounded-full shadow-sm shadow-primary"></div>
                         תובנות בזמן אמת
@@ -324,30 +337,42 @@
             <!-- Enhanced card grid with better shadows and hover effects -->
             <div class="grid sm:grid-cols-2 gap-6 lg:gap-8 text-right">
 
-                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">ביטולים ושינויים שלא נגמרים</h3>
+                <div
+                    class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        ביטולים ושינויים שלא נגמרים</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         לקוחות מבטלים ברגע האחרון, משנים שעות, לא מגיעים - ואתם צריכים לרדוף אחרי לו"ז שמתפרק.
                     </p>
                 </div>
 
-                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">אין תמונת מצב אמיתית</h3>
+                <div
+                    class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        אין תמונת מצב אמיתית</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         כמה לקוחות מגיעים היום? כמה הכנסות צפויות? איפה עומד היום? זה מידע שאף פעם לא ברור עד הסוף.
                     </p>
                 </div>
 
-                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">לקוחות שואלים בלי סוף</h3>
+                <div
+                    class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        לקוחות שואלים בלי סוף</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         "מתי התור שלי?", "כמה זמן נשאר?", "האם יש עיכוב?" -
                         ושום מערכת לא באמת נותנת להם תשובה בזמן אמת.
                     </p>
                 </div>
 
-                <div class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">אין למי לשאול שאלות על העסק</h3>
+                <div
+                    class="group p-8 lg:p-10 bg-background rounded-2xl border border-border/60 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 hover:-translate-y-1">
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        אין למי לשאול שאלות על העסק</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         כמה הרווחתי השבוע? מי הלקוחות שנעלמים? איזה שירות באמת רווחי?
                         המידע קיים - אבל לא נגיש ולא מובן.
@@ -377,15 +402,18 @@
             <!-- Enhanced feature cards with gradients and better icons -->
             <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mt-16">
 
-                <div class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
-                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <div
+                    class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
+                    <div
+                        class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
                             <path d="M4 4h16v16H4z"></path>
                             <path d="M4 9h16"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">סדר בזמן אמת</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">סדר בזמן אמת
+                    </h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         העסק כולו מרוכז במקום אחד.
                         מי הגיע, מי מבטל, כמה זמן נשאר, מה קורה עכשיו –
@@ -393,15 +421,18 @@
                     </p>
                 </div>
 
-                <div class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
-                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <div
+                    class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
+                    <div
+                        class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
                             <path d="M12 20v-8"></path>
                             <path d="M6 20V10"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">ביטולים שמסתדרים לבד</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">ביטולים
+                        שמסתדרים לבד</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         לקוח מבטל?
                         Ozerli משחרר את הזמן שהתפנה, מציע אותו ללקוחות רלוונטיים
@@ -409,15 +440,18 @@
                     </p>
                 </div>
 
-                <div class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
-                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <div
+                    class="group p-8 lg:p-10 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl border border-border/40 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 space-y-5 text-right hover:-translate-y-2">
+                    <div
+                        class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
                             <path d="M4 4h16v16H4z"></path>
                             <path d="M4 9h16"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">עוזר שעונה לכל שאלה</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">עוזר שעונה לכל
+                        שאלה</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         פשוט שואלים:
                         כמה הכנסות היום, מי הלקוחות שנעלמים, מתי העומס הבא,
@@ -452,7 +486,8 @@
                 <div class="space-y-10 sm:space-y-12 order-2 lg:order-1">
 
                     <div class="space-y-6">
-                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">שאלות שהמערכות האחרות לא יכולות לענות עליהן</h3>
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">שאלות שהמערכות האחרות לא יכולות לענות
+                            עליהן</h3>
 
                         <p class="text-foreground/60 leading-relaxed text-lg sm:text-xl">
                             כי הן לא באמת מבינות את העסק.
@@ -463,7 +498,8 @@
                         <ul class="space-y-5 text-base sm:text-lg text-foreground/80">
 
                             <li class="flex items-start gap-4 group">
-                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <div
+                                    class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                     <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                         stroke-width="2.5" class="text-primary">
                                         <path d="M20 6L9 17l-5-5"></path>
@@ -473,7 +509,8 @@
                             </li>
 
                             <li class="flex items-start gap-4 group">
-                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <div
+                                    class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                     <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                         stroke-width="2.5" class="text-primary">
                                         <path d="M20 6L9 17l-5-5"></path>
@@ -483,7 +520,8 @@
                             </li>
 
                             <li class="flex items-start gap-4 group">
-                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <div
+                                    class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                     <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                         stroke-width="2.5" class="text-primary">
                                         <path d="M20 6L9 17l-5-5"></path>
@@ -493,7 +531,8 @@
                             </li>
 
                             <li class="flex items-start gap-4 group">
-                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <div
+                                    class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                     <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                         stroke-width="2.5" class="text-primary">
                                         <path d="M20 6L9 17l-5-5"></path>
@@ -503,7 +542,8 @@
                             </li>
 
                             <li class="flex items-start gap-4 group">
-                                <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                                <div
+                                    class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                     <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                         stroke-width="2.5" class="text-primary">
                                         <path d="M20 6L9 17l-5-5"></path>
@@ -527,17 +567,12 @@
                 </div>
 
                 <!-- Replaced static iframe with clickable preview for appointments dashboard -->
-                <div class="preview-container overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background order-1 lg:order-2 relative" onclick="openModal('appointments')">
-                    <div class="aspect-[4/3] flex items-center justify-center bg-muted/5 relative overflow-hidden">
-                        <iframe 
-                            src="/frames/appointments-dashboard.html" 
-                            class="w-full h-full border-0 pointer-events-none"
-                            style="width: 100%; height: 100%; transform: scale(0.70); transform-origin: top center;"
-                            title="Appointments Dashboard Preview"
-                        ></iframe>
-                        <div class="preview-overlay">
-                            <div class="preview-hint">לחצו לצפייה מלאה</div>
-                        </div>
+                <div class="preview-container overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background relative cursor-pointer"
+                    onclick="openModal('assistant')">
+                    <img src="/images/chat.png" alt="AI Chat Assistant Preview" class="w-full h-full object-cover" />
+
+                    <div class="preview-overlay">
+                        <div class="preview-hint">לחצו לצפייה מלאה</div>
                     </div>
                 </div>
 
@@ -564,8 +599,10 @@
             <!-- Enhanced value proposition cards -->
             <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
 
-                <div class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
-                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <div
+                    class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
+                    <div
+                        class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
                             <path d="M4 4h16v16H4z"></path>
@@ -573,7 +610,8 @@
                         </svg>
                     </div>
 
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">שליטה מלאה במה שקורה</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">שליטה מלאה במה
+                        שקורה</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         לא צריך לנחש מה קורה היום.
                         אתם יודעים בדיוק כמה לקוחות מגיעים, כמה הכנסות צפויות,
@@ -581,8 +619,10 @@
                     </p>
                 </div>
 
-                <div class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
-                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <div
+                    class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
+                    <div
+                        class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
                             <path d="M12 20v-8"></path>
@@ -590,7 +630,8 @@
                         </svg>
                     </div>
 
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">יציבות והכנסות צפויות יותר</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">יציבות והכנסות
+                        צפויות יותר</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         פחות ביטולים שלא טופלו, פחות חורים בלו"ז,
                         יותר תורים מלאים ולקוחות שמחליפים זה את זה.
@@ -598,8 +639,10 @@
                     </p>
                 </div>
 
-                <div class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
-                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                <div
+                    class="group bg-background border border-border/60 rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 space-y-5 hover:-translate-y-2">
+                    <div
+                        class="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                         <svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                             stroke-width="2" class="text-primary">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -607,7 +650,8 @@
                         </svg>
                     </div>
 
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">זמן פנוי לעבודה אמיתית</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">זמן פנוי לעבודה
+                        אמיתית</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         פחות התעסקות עם לקוחות, בירורים, מסודרים, תורים ושאלות.
                         אתם עובדים בשקט, והוא דואג לכל מה שמסביב.
@@ -640,7 +684,8 @@
 
                 <div class="space-y-10 sm:space-y-12">
 
-                    <div class="space-y-5 bg-gradient-to-br from-primary/5 to-transparent p-6 sm:p-8 rounded-2xl border border-primary/20">
+                    <div
+                        class="space-y-5 bg-gradient-to-br from-primary/5 to-transparent p-6 sm:p-8 rounded-2xl border border-primary/20">
                         <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">חוויה שמרגישה מקצועית ובטוחה</h3>
 
                         <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
@@ -672,7 +717,8 @@
                     <ul class="space-y-5 text-base sm:text-lg text-foreground/80 pt-4">
 
                         <li class="flex items-start gap-4 group">
-                            <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                            <div
+                                class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                 <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                     stroke-width="2.5" class="text-primary">
                                     <path d="M20 6L9 17l-5-5"></path>
@@ -682,7 +728,8 @@
                         </li>
 
                         <li class="flex items-start gap-4 group">
-                            <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                            <div
+                                class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                 <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                     stroke-width="2.5" class="text-primary">
                                     <path d="M20 6L9 17l-5-5"></path>
@@ -692,7 +739,8 @@
                         </li>
 
                         <li class="flex items-start gap-4 group">
-                            <div class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
+                            <div
+                                class="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/25 transition-colors">
                                 <svg width="16" height="16" stroke="currentColor" fill="none" viewBox="0 0 24 24"
                                     stroke-width="2.5" class="text-primary">
                                     <path d="M20 6L9 17l-5-5"></path>
@@ -706,17 +754,12 @@
                 </div>
 
                 <!-- Replaced static iframe with clickable preview for live dashboard -->
-                <div class="preview-container overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background relative" onclick="openModal('live')">
-                    <div class="aspect-[16/10] flex items-center justify-center bg-muted/5 relative overflow-hidden">
-                        <iframe 
-                            src="/frames/live-dashboard.html" 
-                            class="w-full h-full border-0 pointer-events-none"
-                            style="width: 100%; height: 118%; transform: scale(0.70); transform-origin: top center;"
-                            title="Live Dashboard Preview"
-                        ></iframe>
-                        <div class="preview-overlay">
-                            <div class="preview-hint">לחצו לצפייה מלאה</div>
-                        </div>
+                <div class="preview-container overflow-hidden rounded-3xl border border-border/60 shadow-2xl bg-background relative cursor-pointer"
+                    onclick="openModal('live')">
+                    <img src="/images/live-dashboard-preview.png" alt="Live Dashboard Preview"
+                        class="w-full h-full object-cover" />
+                    <div class="preview-overlay">
+                        <div class="preview-hint">לחצו לצפייה מלאה</div>
                     </div>
                 </div>
 
@@ -741,8 +784,10 @@
             <!-- Enhanced FAQ items with hover effects -->
             <div class="space-y-6">
 
-                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">האם צריך להזין נתונים או לעבוד עם דוחות?</h3>
+                <div
+                    class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">האם צריך להזין
+                        נתונים או לעבוד עם דוחות?</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         בכלל לא.
                         Ozerli לומד לבד מכל פעולה שקורית בעסק – קביעות, ביטולים, זמני שירות, תשלומים והגעה.
@@ -750,16 +795,20 @@
                     </p>
                 </div>
 
-                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">איך Ozerli יודע לענות על שאלות מורכבות?</h3>
+                <div
+                    class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">איך Ozerli יודע
+                        לענות על שאלות מורכבות?</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         כל תנועה בעסק הופכת למידע: תורים, לקוחות, זמני טיפול, הכנסות ועוד.
                         המערכת מחברת הכל ומחזירה תשובה ברורה – בשפה טבעית ומדויקת.
                     </p>
                 </div>
 
-                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">האם זה תחליף למערכת תורים?</h3>
+                <div
+                    class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">האם זה תחליף
+                        למערכת תורים?</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         המטרה של Ozerli היא הרבה מעבר לניהול תורים.
                         הוא מסדר לכם את היום, מתמודד עם ביטולים, מציע תורים שהתפנו,
@@ -767,16 +816,20 @@
                     </p>
                 </div>
 
-                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">הלקוחות שלי צריכים להתקין משהו?</h3>
+                <div
+                    class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">הלקוחות שלי
+                        צריכים להתקין משהו?</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         לא. הלקוחות מקבלים מידע בזמן אמת על התור שלהם דרך WhatsApp/סמס,
                         בלי אפליקציה ובלי הרשמה.
                     </p>
                 </div>
 
-                <div class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">מה צריך כדי להתחיל?</h3>
+                <div
+                    class="group p-6 sm:p-8 lg:p-10 bg-background border border-border/60 rounded-2xl space-y-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">מה צריך כדי
+                        להתחיל?</h3>
                     <p class="text-foreground/70 leading-relaxed text-base sm:text-lg">
                         רק לפתוח חשבון ולהתחיל לעבוד כרגיל.
                         כל השאר – Ozerli מטפל בו.
@@ -809,7 +862,8 @@
 
             <!-- Enhanced email signup form -->
             <div class="pt-6 sm:pt-8">
-                <div class="inline-flex max-w-2xl w-full p-2 sm:p-2.5 bg-background/95 backdrop-blur rounded-2xl shadow-2xl">
+                <div
+                    class="inline-flex max-w-2xl w-full p-2 sm:p-2.5 bg-background/95 backdrop-blur rounded-2xl shadow-2xl">
                     <div class="flex flex-col sm:flex-row gap-2.5 w-full">
                         <input type="email" placeholder="כתבו את המייל שלכם"
                             class="flex-1 px-5 py-4 rounded-xl bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary text-right text-foreground placeholder:text-foreground/40 font-medium transition-all" />
@@ -838,7 +892,8 @@
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
 
                 <div class="flex items-center gap-4">
-                    <span class="text-xl sm:text-2xl font-bold bg-gradient-to-l from-primary to-foreground bg-clip-text text-transparent">Ozerli</span>
+                    <span
+                        class="text-xl sm:text-2xl font-bold bg-gradient-to-l from-primary to-foreground bg-clip-text text-transparent">Ozerli</span>
                     <span class="text-sm text-foreground/60">© 2025 כל הזכויות שמורות</span>
                 </div>
 
@@ -903,7 +958,7 @@
         }
 
         // Close modal on Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && currentModal) {
                 closeModal();
             }
